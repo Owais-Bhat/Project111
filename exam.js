@@ -172,7 +172,7 @@ const NOTES = {
 <tr><td>2nd</td><td>14–26 weeks</td><td>Fundal height, foetal heart sounds, TT2, de-worming</td></tr>
 <tr><td>3rd</td><td>28–34 weeks</td><td>Check Hb, complications, birth plan</td></tr>
 <tr><td>4th</td><td>36 weeks+</td><td>Presentation, engagement, delivery planning</td></tr></table>
-<div class="key-point">⭐ WHO 2016: Minimum 8 ANC contacts. India target: 4 ANCs (shifting to 8 contacts).</div>
+<div class="kp">⭐ WHO 2016: Minimum 8 ANC contacts. India target: 4 ANCs (shifting to 8 contacts).</div>
 <h4>IFA Supplementation</h4>
 <table><tr><th>Group</th><th>Dose</th><th>Duration</th></tr>
 <tr><td>Pregnant women</td><td>1 IFA (100 mg Fe + 0.5 mg FA) daily</td><td>180 days</td></tr>
@@ -180,7 +180,7 @@ const NOTES = {
 <tr><td>Children 6–59 months</td><td>Iron syrup 1 mg/kg/day</td><td>As per protocol</td></tr></table>
 <h4>Danger Signs in Pregnancy</h4>
 <ul><li>Severe headache + blurred vision (pre-eclampsia)</li><li>Swelling of face/hands</li><li>Vaginal bleeding</li><li>Fits/convulsions (eclampsia)</li><li>Reduced/absent foetal movements</li><li>High fever</li><li>Severe abdominal pain</li></ul>
-<div class="key-point">⭐ Eclampsia treatment: Magnesium sulphate (Pritchard regimen) + antihypertensives + urgent delivery.</div>
+<div class="kp">⭐ Eclampsia treatment: Magnesium sulphate (Pritchard regimen) + antihypertensives + urgent delivery.</div>
 <h4>Newborn Care</h4>
 <ul><li>Immediate: Dry & warm, delayed cord clamping (1–3 min), breastfeeding within 1 hour</li><li>APGAR: 0–3 severe, 4–6 moderate, 7–10 normal</li><li>LBW (<2500 g): KMC, expressed breastmilk</li></ul>
 <h4>APGAR Score (A-P-G-A-R)</h4>
@@ -202,7 +202,7 @@ const NOTES = {
 <tr><td>Chhaya (Centchroman)</td><td>1–2</td><td>Weekly, non-hormonal SERM</td></tr>
 <tr><td>Male condom</td><td>2–15</td><td>Only method protecting against STI/HIV</td></tr>
 <tr><td>LAM</td><td>0.5</td><td>EBF + amenorrhoea + baby <6 months</td></tr></table>
-<div class="key-point">⭐ Pearl Index = pregnancies per 100 woman-years. LOWER = MORE effective.</div>
+<div class="kp">⭐ Pearl Index = pregnancies per 100 woman-years. LOWER = MORE effective.</div>
 <h4>New Contraceptives in India's FP Programme</h4>
 <ul><li><strong>Antara:</strong> DMPA injectable (150 mg/3 months) — 2017</li><li><strong>Chhaya:</strong> Weekly centchroman — non-hormonal</li><li><strong>PPIUCD:</strong> Within 48h of delivery or at 6 weeks</li><li><strong>PAIUCD:</strong> Immediately post-abortion</li></ul>
 <h4>Emergency Contraception</h4>
@@ -220,14 +220,14 @@ const NOTES = {
 <tr><td>5–6 years</td><td>DPT-B2</td></tr>
 <tr><td>10 & 16 years</td><td>Td (Tetanus-Diphtheria)</td></tr></table>
 <p style="font-size:.78rem;color:#94a3b8">*JE vaccine in endemic areas only</p>
-<div class="key-point">⭐ India declared POLIO-FREE: 27 March 2014 | Smallpox eradicated globally: 1980 | India declared MNT (Maternal & Neonatal Tetanus) eliminated: 2015</div>
+<div class="kp">⭐ India declared POLIO-FREE: 27 March 2014 | Smallpox eradicated globally: 1980 | India declared MNT (Maternal & Neonatal Tetanus) eliminated: 2015</div>
 <h4>Cold Chain Equipment</h4>
 <table><tr><th>Equipment</th><th>Temperature</th><th>Use</th></tr>
 <tr><td>Deep Freezer</td><td>-15°C to -25°C</td><td>OPV storage</td></tr>
 <tr><td>ILR (Ice-Lined Refrigerator)</td><td>+2°C to +8°C</td><td>All vaccines storage (OPV in freezer part)</td></tr>
 <tr><td>Cold Box</td><td>+2°C to +8°C</td><td>Transport 48–72 hours</td></tr>
 <tr><td>Vaccine Carrier</td><td>+2°C to +8°C</td><td>Outreach sessions (4 hours)</td></tr></table>
-<div class="key-point">⭐ NEVER freeze: DPT, HepB, Pentavalent (freeze-sensitive — become ineffective). VVM: usable when inner square LIGHTER than outer circle.</div>`,
+<div class="kp">⭐ NEVER freeze: DPT, HepB, Pentavalent (freeze-sensitive — become ineffective). VVM: usable when inner square LIGHTER than outer circle.</div>`,
 
   nutrition:`<h3>Nutrition</h3>
 <h4>Deficiency Diseases — Quick Reference</h4>
@@ -242,7 +242,7 @@ const NOTES = {
 <tr><td>Iodine</td><td>IDD: Goitre, Cretinism</td><td>Enlarged thyroid, hypothyroidism</td></tr>
 <tr><td>Protein (mainly)</td><td>Kwashiorkor</td><td>Oedema, moon face, flaky skin — NO wasting</td></tr>
 <tr><td>Calorie + Protein</td><td>Marasmus</td><td>Severe wasting, no oedema, old-man face</td></tr></table>
-<div class="key-point">⭐ MUAC: SAM <11.5 cm (red) | MAM 11.5–12.5 cm (yellow) | Normal ≥12.5 cm (green)</div>
+<div class="kp">⭐ MUAC: SAM <11.5 cm (red) | MAM 11.5–12.5 cm (yellow) | Normal ≥12.5 cm (green)</div>
 <h4>National Nutrition Programmes</h4>
 <ul><li><strong>ICDS:</strong> 6 services through Anganwadi centres</li><li><strong>POSHAN Abhiyaan (2018):</strong> Nutrition Mission — reduce stunting/undernutrition 2%/year</li><li><strong>Anaemia Mukt Bharat:</strong> 6×6×6 strategy</li><li><strong>PM POSHAN (Mid-Day Meal):</strong> Classes 1–8</li></ul>`,
 
@@ -257,7 +257,7 @@ const NOTES = {
 <tr><td>Plague</td><td>Rat flea (Xenopsylla)</td><td>Y. pestis</td><td>Bubonic, pneumonic, septicaemic</td></tr></table>
 <h4>TB Quick Facts</h4>
 <ul><li>India: 26% global TB burden (highest)</li><li>Transmission: Airborne droplet nuclei (<5 μm)</li><li>Diagnosis: CBNAAT/TrueNat + AFB smear</li><li>Treatment DS-TB: 2HRZE + 4HR (6 months DOTS)</li><li>MDR-TB: resistant to Rifampicin + Isoniazid</li><li>Nikshay Poshan Yojana: ₹500/month to TB patients</li></ul>
-<div class="key-point">⭐ Goal: TB-Free India by 2025 (5 years before global target of 2030)</div>`,
+<div class="kp">⭐ Goal: TB-Free India by 2025 (5 years before global target of 2030)</div>`,
 
   ncd:`<h3>Non-Communicable Diseases</h3>
 <h4>Diagnostic Criteria</h4>
@@ -270,7 +270,7 @@ const NOTES = {
 <tr><td>Obesity (BMI)</td><td>≥25 kg/m² (Asian cut-off) or ≥30 kg/m² (WHO general)</td></tr></table>
 <h4>NCD Screening at HWCs</h4>
 <ul><li>Hypertension screening (BP measurement)</li><li>Diabetes screening (blood glucose)</li><li>Oral cancer: oral examination</li><li>Breast cancer: clinical breast examination</li><li>Cervical cancer: VIA (Visual Inspection with Acetic Acid)</li></ul>
-<div class="key-point">⭐ HPV vaccine: Cervarix (types 16+18) or Gardasil (6,11,16,18). Given to girls 9–14 years before sexual debut for cervical cancer prevention.</div>`,
+<div class="kp">⭐ HPV vaccine: Cervarix (types 16+18) or Gardasil (6,11,16,18). Given to girls 9–14 years before sexual debut for cervical cancer prevention.</div>`,
 
   programs:`<h3>National Health Programmes</h3>
 <h4>Health System Infrastructure (IPHS Norms)</h4>
@@ -288,7 +288,7 @@ const NOTES = {
 <tr><td>PMSMA</td><td>2016</td><td>Free ANC by specialists on 9th of every month</td></tr>
 <tr><td>PM-JAY</td><td>2018</td><td>₹5 lakh/family/year for hospitalisation (bottom 40%)</td></tr>
 <tr><td>NHM</td><td>2005/2013</td><td>ASHA, RKS, untied funds, VHND, HWCs</td></tr></table>
-<div class="key-point">⭐ ASHA minimum qualifications: 8th pass (earlier), now 10th pass preferred. Must be married/widowed/divorced, age 25–45, from same village.</div>`,
+<div class="kp">⭐ ASHA minimum qualifications: 8th pass (earlier), now 10th pass preferred. Must be married/widowed/divorced, age 25–45, from same village.</div>`,
 
   firstaid:`<h3>First Aid & Emergency Care</h3>
 <h4>Basic Life Support (BLS) — CPR</h4>
@@ -296,7 +296,7 @@ const NOTES = {
 <h4>Choking Management</h4>
 <ul><li>Mild (can cough): Encourage coughing</li><li>Severe conscious adult: 5 back blows + 5 abdominal thrusts (Heimlich) — repeat</li><li>Infant: 5 back blows face-down + 5 chest thrusts (NO abdominal thrusts)</li><li>Unconscious: CPR (each opening of airway — look for object)</li></ul>
 <h4>Burns</h4>
-<div class="key-point">⭐ Rule of Nines (adult): Head+neck=9% | Each arm=9% | Chest=9% | Abdomen=9% | Back upper=9% | Back lower=9% | Each thigh=9% | Each leg=9% | Genitalia=1%</div>
+<div class="kp">⭐ Rule of Nines (adult): Head+neck=9% | Each arm=9% | Chest=9% | Abdomen=9% | Back upper=9% | Back lower=9% | Each thigh=9% | Each leg=9% | Genitalia=1%</div>
 <ul><li>Cool: Running water 20 minutes (NOT ice)</li><li>Cover: Clean non-fluffy material / cling film</li><li>Do NOT apply butter, toothpaste, oil</li><li>Parkland formula: 4 mL × kg × %BSA burned</li></ul>
 <h4>Poison/Snakebite</h4>
 <ul><li>Snakebite: Immobilise, below heart level, rush to hospital for antivenom</li><li>Do NOT: cut, suck, tourniquet, apply electricity</li><li>Organophosphate poisoning: atropine + pralidoxime</li></ul>`,
@@ -336,7 +336,7 @@ const NOTES = {
 <tr><td>🔴 Red</td><td>Recyclable contaminated (IV sets, syringes)</td><td>Autoclave + shredding</td></tr>
 <tr><td>⬜ White</td><td>Sharps (needles, blades, scalpels)</td><td>Hub-cutter → puncture-proof container</td></tr>
 <tr><td>🔵 Blue</td><td>Glass/broken vials</td><td>Autoclave + encapsulation</td></tr></table>
-<div class="key-point">⭐ NEVER recap needles. Use hub-cutter/needle destroyer AT POINT OF USE. Needle-stick injury: wash with soap, report, take PEP (post-exposure prophylaxis) for HIV within 72 hours.</div>`,
+<div class="kp">⭐ NEVER recap needles. Use hub-cutter/needle destroyer AT POINT OF USE. Needle-stick injury: wash with soap, report, take PEP (post-exposure prophylaxis) for HIV within 72 hours.</div>`,
 
   stats:`<h3>Health Statistics & Epidemiology</h3>
 <h4>India's Key Health Indicators (SRS 2020 / NFHS-5)</h4>
@@ -354,7 +354,7 @@ const NOTES = {
 <tr><td>Case-Control</td><td>Disease→Exposure (backward)</td><td>Odds Ratio (OR)</td></tr>
 <tr><td>Cross-sectional</td><td>Simultaneous</td><td>Prevalence</td></tr>
 <tr><td>RCT</td><td>Intervention→Outcome</td><td>NNT, RRR</td></tr></table>
-<div class="key-point">⭐ Sensitivity = TP/(TP+FN) — detects disease (SnNOut: Sensitive Negative rules Out). Specificity = TN/(TN+FP) — rules in disease (SpPIn: Specific Positive rules In).</div>`,
+<div class="kp">⭐ Sensitivity = TP/(TP+FN) — detects disease (SnNOut: Sensitive Negative rules Out). Specificity = TN/(TN+FP) — rules in disease (SpPIn: Specific Positive rules In).</div>`,
 
   drug:`<h3>Essential Medicines & Drug Administration</h3>
 <h4>Drug Administration Routes</h4>
@@ -374,7 +374,7 @@ const NOTES = {
 <tr><td>ORS</td><td>Diarrhoea dehydration</td><td>245 mOsm/L low-osmolarity</td></tr>
 <tr><td>Zinc</td><td>Diarrhoea in children</td><td>14 days — reduces recurrence</td></tr>
 <tr><td>Vitamin A megadose</td><td>VAD, post-delivery</td><td>2,00,000 IU mother within 6 weeks</td></tr></table>
-<div class="key-point">⭐ CONTRAINDICATED in pregnancy: Tetracycline (teeth), Warfarin (bleeding), Thalidomide (limb defects), ACE inhibitors (renal), Fluoroquinolones (cartilage), Methotrexate (abortifacient).</div>`,
+<div class="kp">⭐ CONTRAINDICATED in pregnancy: Tetracycline (teeth), Warfarin (bleeding), Thalidomide (limb defects), ACE inhibitors (renal), Fluoroquinolones (cartilage), Methotrexate (abortifacient).</div>`,
 };
 
 /* ──────────────────── STATE ──────────────────── */
@@ -390,8 +390,8 @@ let currentMock = { paper: null, answers: {}, idx: 0, timer: null, timeLeft: 720
 
 function saveProgress() {
   localStorage.setItem('jkssb_progress', JSON.stringify(progress));
-  localStorage.setItem('jkssb_streak', streak);
-  localStorage.setItem('jkssb_bestStreak', bestStreak);
+  localStorage.setItem('jkssb_streak', String(streak));
+  localStorage.setItem('jkssb_bestStreak', String(bestStreak));
   localStorage.setItem('jkssb_mockHistory', JSON.stringify(mockHistory));
 }
 
@@ -401,6 +401,7 @@ function recordAnswer(topicId, correct) {
   if (correct) { progress[topicId].correct++; streak++; if (streak > bestStreak) bestStreak = streak; }
   else streak = 0;
   saveProgress();
+  updateHeaderStreak();
 }
 
 function getTotals() {
@@ -409,17 +410,23 @@ function getTotals() {
   return { total, correct };
 }
 
+function updateHeaderStreak() {
+  const el = document.getElementById('streak-display');
+  if (el) el.textContent = bestStreak;
+}
+
 /* ──────────────────── NAVIGATION ──────────────────── */
 function openPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
-  document.querySelector(`.nav-btn[data-page="${id}"]`).classList.add('active');
-  if (id === 'home') renderHome();
-  if (id === 'quiz') resetQuizUI();
-  if (id === 'mock') renderMockSelector();
-  if (id === 'notes') renderNotesSidebar();
-  if (id === 'ai') initAI();
+  const navBtn = document.querySelector(`.nav-btn[data-page="${id}"]`);
+  if (navBtn) navBtn.classList.add('active');
+  if (id === 'home')     renderHome();
+  if (id === 'quiz')     resetQuizUI();
+  if (id === 'mock')     renderMockSelector();
+  if (id === 'notes')    renderNotesSidebar();
+  if (id === 'ai')       initAI();
   if (id === 'progress') renderProgress();
 }
 document.querySelectorAll('.nav-btn[data-page]').forEach(btn => {
@@ -433,20 +440,40 @@ function renderHome() {
     const p = progress[t.id] || { attempted: 0, correct: 0 };
     const qCount = QUESTIONS.filter(q => q.topic === t.id).length;
     const acc = p.attempted ? Math.round(p.correct / p.attempted * 100) : null;
-    return `<div class="topic-card" onclick="startTopicQuiz('${t.id}')">
-      <span class="t-icon">${t.icon}</span>
-      <div class="t-name">${t.name}</div>
-      <div class="t-count">${qCount} Qs · ${p.attempted} done</div>
-      ${acc !== null ? `<div class="t-acc">${acc}% accuracy</div>` : ''}
+    const pct = p.attempted ? Math.round(p.correct / p.attempted * 100) : 0;
+    return `<div class="topic-card-3d" onclick="startTopicQuiz('${t.id}')" style="--card-accent:${t.color||'#00d4ff'}">
+      <div class="tc-icon">${t.icon}</div>
+      <div class="tc-name">${t.name}</div>
+      <div class="tc-meta">${qCount} Questions</div>
+      <div class="tc-bar-wrap"><div class="tc-bar" style="width:${pct}%"></div></div>
+      <div class="tc-footer">${p.attempted} done${acc !== null ? ' · ' + acc + '% acc' : ''}</div>
     </div>`;
   }).join('');
+
+  /* attach 3-D tilt effect */
+  document.querySelectorAll('.topic-card-3d').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `perspective(600px) rotateY(${x * 18}deg) rotateX(${-y * 18}deg) scale(1.04)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+
   const { total, correct } = getTotals();
-  document.getElementById('home-total-q').textContent = total;
-  document.getElementById('home-correct').textContent = correct;
-  document.getElementById('home-streak').textContent = bestStreak;
-  document.getElementById('home-accuracy').textContent = total ? Math.round(correct / total * 100) + '%' : '0%';
-  document.getElementById('home-mocks').textContent = mockHistory.length;
+  const wrong = total - correct;
+  const acc = total ? Math.round(correct / total * 100) : 0;
+  const el = id => document.getElementById(id);
+  if (el('hs-acc'))      el('hs-acc').textContent      = acc + '%';
+  if (el('ls-attempted'))el('ls-attempted').textContent = total;
+  if (el('ls-correct'))  el('ls-correct').textContent   = correct;
+  if (el('ls-wrong'))    el('ls-wrong').textContent     = wrong;
+  if (el('ls-streak'))   el('ls-streak').textContent    = bestStreak;
+  if (el('ls-mocks'))    el('ls-mocks').textContent     = mockHistory.length;
+  updateHeaderStreak();
 }
+
 function startTopicQuiz(topicId) {
   openPage('quiz');
   document.getElementById('quiz-topic-select').value = topicId;
@@ -456,120 +483,173 @@ function startTopicQuiz(topicId) {
 /* ──────────────────── QUIZ ──────────────────── */
 (function buildTopicSelect() {
   const sel = document.getElementById('quiz-topic-select');
-  TOPICS.forEach(t => { const o = document.createElement('option'); o.value = t.id; o.textContent = t.icon + ' ' + t.name; sel.appendChild(o); });
+  TOPICS.forEach(t => {
+    const o = document.createElement('option');
+    o.value = t.id; o.textContent = t.icon + ' ' + t.name;
+    sel.appendChild(o);
+  });
 })();
 
 function resetQuizUI() {
-  document.getElementById('quiz-topic-selector').classList.remove('hidden');
-  document.getElementById('quiz-area').classList.add('hidden');
-  document.getElementById('quiz-result').classList.add('hidden');
+  show('quiz-selector'); hide('quiz-arena'); hide('quiz-result');
 }
 
+function show(id) { const el=document.getElementById(id); if(el) el.classList.remove('hidden'); }
+function hide(id) { const el=document.getElementById(id); if(el) el.classList.add('hidden'); }
+function el(id)   { return document.getElementById(id); }
+
 document.getElementById('start-quiz-btn').addEventListener('click', () => {
-  const topicId = document.getElementById('quiz-topic-select').value;
-  const mode = document.getElementById('quiz-mode-select').value;
-  const countVal = document.getElementById('quiz-count-select').value;
-  let pool = (topicId === 'all' ? [...QUESTIONS] : QUESTIONS.filter(q => q.topic === topicId)).sort(() => Math.random() - 0.5);
+  const topicId  = el('quiz-topic-select').value;
+  const mode     = el('quiz-mode-select').value;
+  const countVal = el('quiz-count-select').value;
+  let pool = (topicId === 'all' ? [...QUESTIONS] : QUESTIONS.filter(q => q.topic === topicId))
+               .sort(() => Math.random() - 0.5);
   if (countVal !== 'all') pool = pool.slice(0, parseInt(countVal));
   if (!pool.length) { alert('No questions for this topic!'); return; }
   lastQuizParams = { topicId, mode, countVal };
   currentQuiz = { questions: pool, idx: 0, score: 0, mode, userAnswers: [] };
-  document.getElementById('quiz-topic-selector').classList.add('hidden');
-  document.getElementById('quiz-area').classList.remove('hidden');
-  document.getElementById('quiz-result').classList.add('hidden');
+  hide('quiz-selector'); show('quiz-arena'); hide('quiz-result');
+  /* reset flip card */
+  el('flip-card').classList.remove('flipped');
   renderQuestion();
 });
 
 function renderQuestion() {
-  const q = currentQuiz.questions[currentQuiz.idx];
+  const q     = currentQuiz.questions[currentQuiz.idx];
   const total = currentQuiz.questions.length;
-  document.getElementById('q-counter').textContent = `Q ${currentQuiz.idx + 1} / ${total}`;
-  document.getElementById('q-topic-label').textContent = TOPICS.find(t => t.id === q.topic)?.name || '';
-  document.getElementById('q-score-live').textContent = `Score: ${currentQuiz.score}`;
-  document.getElementById('q-progress-bar').style.width = (currentQuiz.idx / total * 100) + '%';
-  document.getElementById('q-text').textContent = q.q;
-  document.getElementById('q-options').innerHTML = q.opts.map((opt, i) =>
-    `<button class="option-btn" data-idx="${i}">${String.fromCharCode(65+i)}. ${opt}</button>`).join('');
-  document.querySelectorAll('.option-btn').forEach(btn => btn.addEventListener('click', () => selectOption(parseInt(btn.dataset.idx))));
-  document.getElementById('explanation-box').classList.add('hidden');
-  document.getElementById('btn-next').style.display = 'none';
-  document.getElementById('btn-finish').style.display = 'none';
+  const pct   = Math.round(currentQuiz.idx / total * 100);
+  /* HUD */
+  if (el('q-counter'))    el('q-counter').textContent    = `Q ${currentQuiz.idx + 1} / ${total}`;
+  if (el('q-num-badge'))  el('q-num-badge').textContent  = `Q${currentQuiz.idx + 1}`;
+  if (el('q-topic-chip')) el('q-topic-chip').textContent = TOPICS.find(t => t.id === q.topic)?.name || '';
+  if (el('q-score'))      el('q-score').textContent      = currentQuiz.score;
+  if (el('q-streak'))     el('q-streak').textContent     = '🔥' + streak;
+  if (el('q-bar'))        el('q-bar').style.width        = pct + '%';
+  /* question */
+  if (el('q-text')) el('q-text').textContent = q.q;
+  if (el('q-options')) {
+    el('q-options').innerHTML = q.opts.map((opt, i) =>
+      `<button class="opt-btn" data-idx="${i}"><span class="opt-label">${String.fromCharCode(65+i)}</span>${opt}</button>`
+    ).join('');
+    el('q-options').querySelectorAll('.opt-btn').forEach(btn =>
+      btn.addEventListener('click', () => selectOption(parseInt(btn.dataset.idx)))
+    );
+  }
+  /* ensure card is on front */
+  el('flip-card').classList.remove('flipped');
+  /* hide test-mode-nav */
+  hide('test-mode-nav');
 }
 
 function selectOption(chosen) {
   const q = currentQuiz.questions[currentQuiz.idx];
   const isCorrect = chosen === q.ans;
-  const isLast = currentQuiz.idx === currentQuiz.questions.length - 1;
+  const isLast    = currentQuiz.idx === currentQuiz.questions.length - 1;
   currentQuiz.userAnswers.push({ chosen, correct: q.ans, isCorrect, q });
-  if (isCorrect) currentQuiz.score++;
+  if (isCorrect) { currentQuiz.score++; launchConfetti(); }
   recordAnswer(q.topic, isCorrect);
-  document.querySelectorAll('.option-btn').forEach((btn, i) => {
+  /* mark options */
+  el('q-options').querySelectorAll('.opt-btn').forEach((btn, i) => {
     btn.disabled = true;
-    if (i === q.ans) btn.classList.add('reveal');
+    if (i === q.ans) btn.classList.add('correct');
     if (i === chosen && !isCorrect) btn.classList.add('wrong');
-    if (i === chosen && isCorrect) btn.classList.add('correct');
   });
-  document.getElementById('q-score-live').textContent = `Score: ${currentQuiz.score}`;
+  if (el('q-score')) el('q-score').textContent = currentQuiz.score;
+  if (el('q-streak')) el('q-streak').textContent = '🔥' + streak;
+
   if (currentQuiz.mode === 'learn') {
-    document.getElementById('expl-text').textContent = q.expl;
-    document.getElementById('explanation-box').classList.remove('hidden');
+    /* flip card to show explanation */
+    if (el('expl-body')) el('expl-body').textContent = q.expl;
+    setTimeout(() => {
+      el('flip-card').classList.add('flipped');
+      /* btn-next-flip listener set once */
+    }, 600);
+    /* update btn-next-flip label for last Q */
+    if (el('btn-next-flip')) el('btn-next-flip').textContent = isLast ? 'Show Results 🏆' : 'Next Question →';
+  } else {
+    /* test mode — show nav buttons */
+    show('test-mode-nav');
+    if (el('btn-finish-test')) el('btn-finish-test').style.display = isLast ? 'inline-block' : 'none';
+    if (el('btn-next-test'))   el('btn-next-test').style.display   = isLast ? 'none' : 'inline-block';
   }
-  document.getElementById(isLast ? 'btn-finish' : 'btn-next').style.display = 'inline-block';
 }
 
-document.getElementById('btn-next').addEventListener('click', () => { currentQuiz.idx++; renderQuestion(); });
-document.getElementById('btn-finish').addEventListener('click', showResult);
+/* Flip card back — "Next Question" button */
+el('btn-next-flip').addEventListener('click', () => {
+  el('flip-card').classList.remove('flipped');
+  setTimeout(() => {
+    if (currentQuiz.idx >= currentQuiz.questions.length - 1) { showQuizResult(); return; }
+    currentQuiz.idx++;
+    renderQuestion();
+  }, 400);
+});
 
-function showResult() {
-  document.getElementById('quiz-area').classList.add('hidden');
-  document.getElementById('quiz-result').classList.remove('hidden');
+/* Test mode nav */
+el('btn-next-test').addEventListener('click', () => { currentQuiz.idx++; renderQuestion(); });
+el('btn-finish-test').addEventListener('click', showQuizResult);
+
+function showQuizResult() {
+  hide('quiz-arena');
+  show('quiz-result');
   const { score, questions, userAnswers } = currentQuiz;
   const pct = Math.round(score / questions.length * 100);
-  let emoji='😞', title='Keep Practising!';
-  if (pct>=90){emoji='🏆';title='Outstanding! Excellent!';}
-  else if(pct>=75){emoji='🎉';title='Great Job! Well done!';}
-  else if(pct>=60){emoji='👍';title='Good! Keep going!';}
-  else if(pct>=40){emoji='📚';title='Need More Practice';}
-  document.getElementById('result-emoji').textContent = emoji;
-  document.getElementById('result-title').textContent = title;
-  document.getElementById('result-score-text').textContent = `You scored ${score} out of ${questions.length} (${pct}%)`;
-  const bar = document.getElementById('result-bar');
-  bar.style.width = '0%';
-  setTimeout(() => bar.style.width = pct + '%', 100);
-  document.getElementById('result-review').innerHTML = '<h3 style="margin-bottom:.65rem;font-size:.95rem;text-align:left">📋 Review All Answers</h3>' +
-    userAnswers.map((a, i) => `<div class="review-item ${a.isCorrect?'r-correct':'r-wrong'}">
-      <div class="review-q">Q${i+1}: ${a.q.q}</div>
-      <div class="review-ans">
-        ${!a.isCorrect?`<span class="review-wrong-ans">Your answer: ${String.fromCharCode(65+a.chosen)}. ${a.q.opts[a.chosen]}</span><br/>`:''}
-        <strong>✅ Correct: ${String.fromCharCode(65+a.correct)}. ${a.q.opts[a.correct]}</strong>
-      </div>
-      <div style="font-size:.8rem;color:#7dd3fc;margin-top:.3rem">💡 ${a.q.expl}</div>
-    </div>`).join('');
+  let emoji = '😞', title = 'Keep Practising!';
+  if (pct >= 90) { emoji = '🏆'; title = 'Outstanding! Brilliant!'; }
+  else if (pct >= 75) { emoji = '🎉'; title = 'Great Job! Well Done!'; }
+  else if (pct >= 60) { emoji = '👍'; title = 'Good! Keep Going!'; }
+  else if (pct >= 40) { emoji = '📚'; title = 'Need More Practice'; }
+  if (el('r-orb'))    el('r-orb').textContent    = emoji;
+  if (el('r-title'))  el('r-title').textContent  = title;
+  if (el('r-pct'))    el('r-pct').textContent    = pct + '%';
+  if (el('r-detail')) el('r-detail').textContent = `You scored ${score} out of ${questions.length}`;
+  /* animate SVG arc */
+  animateArc('score-arc', pct);
+  /* review */
+  if (el('r-review')) {
+    el('r-review').innerHTML = '<h3 style="margin-bottom:.8rem;font-size:.95rem">📋 Review All Answers</h3>' +
+      userAnswers.map((a, i) => `<div class="review-item ${a.isCorrect ? 'rc' : 'rw'}">
+        <div class="rev-q">Q${i+1}: ${a.q.q}</div>
+        <div class="rev-a">
+          ${!a.isCorrect ? `<span class="rev-wrong">Your answer: ${String.fromCharCode(65+a.chosen)}. ${a.q.opts[a.chosen]}</span><br/>` : ''}
+          <strong>✅ Correct: ${String.fromCharCode(65+a.correct)}. ${a.q.opts[a.correct]}</strong>
+        </div>
+        <div class="rev-expl">💡 ${a.q.expl}</div>
+      </div>`).join('');
+  }
 }
 
 function retakeQuiz() {
   if (!lastQuizParams) { resetQuizUI(); return; }
-  document.getElementById('quiz-topic-select').value = lastQuizParams.topicId;
-  document.getElementById('quiz-mode-select').value = lastQuizParams.mode;
-  document.getElementById('quiz-count-select').value = lastQuizParams.countVal;
+  el('quiz-topic-select').value = lastQuizParams.topicId;
+  el('quiz-mode-select').value  = lastQuizParams.mode;
+  el('quiz-count-select').value = lastQuizParams.countVal;
   resetQuizUI();
-  document.getElementById('start-quiz-btn').click();
+  el('start-quiz-btn').click();
+}
+
+/* SVG arc animation helper */
+function animateArc(arcId, pct) {
+  const arc = document.getElementById(arcId);
+  if (!arc) return;
+  const circ = 339.3;
+  const offset = circ - (circ * pct / 100);
+  arc.style.transition = 'stroke-dashoffset 1.2s cubic-bezier(.4,0,.2,1)';
+  arc.style.strokeDashoffset = offset;
 }
 
 /* ──────────────────── MOCK PAPERS ──────────────────── */
 function renderMockSelector() {
-  document.getElementById('mock-selector').classList.remove('hidden');
-  document.getElementById('mock-area').classList.add('hidden');
-  document.getElementById('mock-result').classList.add('hidden');
-  const grid = document.getElementById('mock-paper-grid');
+  show('mock-selector'); hide('mock-arena'); hide('mock-result-panel');
+  const grid = el('mock-papers-grid');
+  if (!grid) return;
   grid.innerHTML = MOCK_PAPERS.map((mp, i) => {
     const done = mockHistory.find(h => h.id === mp.id);
-    return `<div class="mock-paper-card ${done?'completed':''}" onclick="startMock('${mp.id}')">
-      <div class="mp-num">${i+1}</div>
-      <div class="mp-title">${mp.title}</div>
-      <div class="mp-meta">${mp.subtitle}</div>
-      <div style="margin-top:.5rem">${mp.tags.map(t=>`<span class="mp-badge">${t}</span>`).join(' ')}</div>
-      ${done?`<div style="margin-top:.5rem;font-size:.8rem;color:#4ade80">✅ Best Score: ${done.score}/${done.total} (${Math.round(done.score/done.total*100)}%)</div>`:''}
+    return `<div class="mock-card${done ? ' done' : ''}" onclick="startMock('${mp.id}')">
+      <div class="mc-num">${i + 1}</div>
+      <div class="mc-title">${mp.title}</div>
+      <div class="mc-sub">${mp.subtitle}</div>
+      <div class="mc-tags">${mp.tags.map(t => `<span class="mc-tag">${t}</span>`).join('')}</div>
+      ${done ? `<div class="mc-best">✅ Best: ${done.score}/${done.total} (${Math.round(done.score/done.total*100)}%)</div>` : ''}
     </div>`;
   }).join('');
 }
@@ -578,296 +658,311 @@ function startMock(paperId) {
   const paper = MOCK_PAPERS.find(p => p.id === paperId);
   buildMockPaper(paper);
   currentMock = { paper, answers: {}, idx: 0, timer: null, timeLeft: 7200 };
-  document.getElementById('mock-selector').classList.add('hidden');
-  document.getElementById('mock-area').classList.remove('hidden');
-  document.getElementById('mock-result').classList.add('hidden');
-  document.getElementById('mock-title').textContent = paper.title;
+  hide('mock-selector'); show('mock-arena'); hide('mock-result-panel');
+  if (el('mock-paper-title')) el('mock-paper-title').textContent = paper.title;
   renderMockQuestion();
-  buildMockAnswerGrid();
+  buildMockGrid();
   startMockTimer();
 }
 
 function renderMockQuestion() {
-  const q = currentMock.paper.qs[currentMock.idx];
+  const q     = currentMock.paper.qs[currentMock.idx];
   const total = currentMock.paper.qs.length;
-  document.getElementById('mock-q-counter').textContent = `Q ${currentMock.idx+1}/${total}`;
-  document.getElementById('mock-progress-bar').style.width = ((currentMock.idx+1)/total*100)+'%';
-  document.getElementById('mock-q-text').textContent = q.q;
+  if (el('mock-q-counter')) el('mock-q-counter').textContent = `Q ${currentMock.idx + 1}/${total}`;
+  if (el('mock-q-num'))     el('mock-q-num').textContent     = `Q${currentMock.idx + 1}`;
+  if (el('mock-bar'))       el('mock-bar').style.width       = ((currentMock.idx + 1) / total * 100) + '%';
+  if (el('mock-q-text'))    el('mock-q-text').textContent    = q.q;
   const chosen = currentMock.answers[currentMock.idx];
-  document.getElementById('mock-q-options').innerHTML = q.opts.map((opt,i)=>{
-    let cls = '';
-    if (chosen !== undefined) { if(i===chosen) cls='correct'; }
-    return `<button class="option-btn ${cls}" data-idx="${i}" ${chosen!==undefined?'disabled':''}>${String.fromCharCode(65+i)}. ${opt}</button>`;
-  }).join('');
-  if (chosen === undefined) {
-    document.querySelectorAll('#mock-q-options .option-btn').forEach(btn =>
-      btn.addEventListener('click', () => selectMockOption(parseInt(btn.dataset.idx))));
+  if (el('mock-options')) {
+    el('mock-options').innerHTML = q.opts.map((opt, i) => {
+      let cls = '';
+      if (chosen !== undefined && i === chosen) cls = ' correct';
+      return `<button class="opt-btn${cls}" data-idx="${i}" ${chosen !== undefined ? 'disabled' : ''}><span class="opt-label">${String.fromCharCode(65+i)}</span>${opt}</button>`;
+    }).join('');
+    if (chosen === undefined) {
+      el('mock-options').querySelectorAll('.opt-btn').forEach(btn =>
+        btn.addEventListener('click', () => selectMockOption(parseInt(btn.dataset.idx)))
+      );
+    }
   }
-  updateMockAnswerGrid();
+  updateMockGrid();
 }
 
 function selectMockOption(chosen) {
   currentMock.answers[currentMock.idx] = chosen;
-  document.getElementById('mock-score-live').textContent =
-    Object.keys(currentMock.answers).filter(k => currentMock.answers[k] === currentMock.paper.qs[k].ans).length;
+  const live = Object.keys(currentMock.answers).filter(k => currentMock.answers[k] === currentMock.paper.qs[k].ans).length;
+  if (el('mock-live-score')) el('mock-live-score').textContent = live;
   renderMockQuestion();
 }
 
-function buildMockAnswerGrid() {
-  const grid = document.getElementById('mock-answer-grid');
+function buildMockGrid() {
+  const grid = el('mock-grid');
+  if (!grid) return;
   const total = currentMock.paper.qs.length;
-  grid.innerHTML = Array.from({length:total},(_,i)=>
-    `<button class="mock-ans-btn" id="mab-${i}" onclick="jumpMock(${i})">${i+1}</button>`).join('');
+  grid.innerHTML = Array.from({ length: total }, (_, i) =>
+    `<button class="mg-btn" id="mab-${i}" onclick="jumpMock(${i})">${i + 1}</button>`
+  ).join('');
 }
 
-function updateMockAnswerGrid() {
+function updateMockGrid() {
   const total = currentMock.paper.qs.length;
-  for(let i=0;i<total;i++){
-    const btn = document.getElementById('mab-'+i);
-    if(!btn) continue;
-    btn.className = 'mock-ans-btn' + (currentMock.answers[i]!==undefined?' answered':'') + (i===currentMock.idx?' current':'');
+  for (let i = 0; i < total; i++) {
+    const btn = document.getElementById('mab-' + i);
+    if (!btn) continue;
+    btn.className = 'mg-btn'
+      + (currentMock.answers[i] !== undefined ? ' answered' : '')
+      + (i === currentMock.idx ? ' current' : '');
   }
 }
 
 function jumpMock(idx) { currentMock.idx = idx; renderMockQuestion(); }
 
-document.getElementById('mock-btn-prev').addEventListener('click', () => { if(currentMock.idx>0){currentMock.idx--;renderMockQuestion();} });
-document.getElementById('mock-btn-next').addEventListener('click', () => {
-  if(currentMock.idx < currentMock.paper.qs.length-1){ currentMock.idx++; renderMockQuestion(); }
+el('mock-prev').addEventListener('click', () => {
+  if (currentMock.idx > 0) { currentMock.idx--; renderMockQuestion(); }
 });
-document.getElementById('mock-btn-submit').addEventListener('click', () => {
-  const answered = Object.keys(currentMock.answers).length;
-  const total = currentMock.paper.qs.length;
-  if(answered < total && !confirm(`You have answered ${answered}/${total} questions. Submit anyway?`)) return;
-  submitMock();
+el('mock-next').addEventListener('click', () => {
+  if (currentMock.idx < currentMock.paper.qs.length - 1) { currentMock.idx++; renderMockQuestion(); }
 });
 
 function startMockTimer() {
   clearInterval(currentMock.timer);
   currentMock.timer = setInterval(() => {
     currentMock.timeLeft--;
-    const h = Math.floor(currentMock.timeLeft/3600).toString().padStart(2,'0');
-    const m = Math.floor((currentMock.timeLeft%3600)/60).toString().padStart(2,'0');
-    const s = (currentMock.timeLeft%60).toString().padStart(2,'0');
-    const el = document.getElementById('mock-timer');
-    if(el) { el.textContent = `${h}:${m}:${s}`; el.style.color = currentMock.timeLeft<300?'#f87171':'#f59e0b'; }
-    if(currentMock.timeLeft<=0){ clearInterval(currentMock.timer); submitMock(); }
+    const h = Math.floor(currentMock.timeLeft / 3600).toString().padStart(2, '0');
+    const m = Math.floor((currentMock.timeLeft % 3600) / 60).toString().padStart(2, '0');
+    const s = (currentMock.timeLeft % 60).toString().padStart(2, '0');
+    const t = el('mock-timer');
+    if (t) { t.textContent = `${h}:${m}:${s}`; t.style.color = currentMock.timeLeft < 300 ? '#f87171' : ''; }
+    if (currentMock.timeLeft <= 0) { clearInterval(currentMock.timer); submitMock(); }
   }, 1000);
 }
 
 function submitMock() {
   clearInterval(currentMock.timer);
+  const answered = Object.keys(currentMock.answers).length;
+  const total    = currentMock.paper.qs.length;
+  if (answered < total && !confirm(`You have answered ${answered}/${total} questions. Submit anyway?`)) return;
   const qs = currentMock.paper.qs;
   let score = 0;
   const topicStats = {};
   qs.forEach((q, i) => {
-    const chosen = currentMock.answers[i];
+    const chosen  = currentMock.answers[i];
     const correct = chosen === q.ans;
-    if(correct) score++;
-    if(!topicStats[q.topic]) topicStats[q.topic] = {name: TOPICS.find(t=>t.id===q.topic)?.name||q.topic, total:0, correct:0};
+    if (correct) score++;
+    if (!topicStats[q.topic]) topicStats[q.topic] = { name: TOPICS.find(t => t.id === q.topic)?.name || q.topic, total: 0, correct: 0 };
     topicStats[q.topic].total++;
-    if(correct) topicStats[q.topic].correct++;
+    if (correct) topicStats[q.topic].correct++;
     recordAnswer(q.topic, correct);
   });
-  const total = qs.length;
-  const pct = Math.round(score/total*100);
+  const pct = Math.round(score / total * 100);
   mockHistory.unshift({ id: currentMock.paper.id, title: currentMock.paper.title, score, total, pct, date: new Date().toLocaleDateString('en-IN') });
-  if(mockHistory.length > 20) mockHistory.pop();
+  if (mockHistory.length > 20) mockHistory.pop();
   saveProgress();
-  document.getElementById('mock-area').classList.add('hidden');
-  document.getElementById('mock-result').classList.remove('hidden');
-  let emoji='😞', title='Keep Practising!';
-  if(pct>=80){emoji='🏆';title='Excellent! Paper Cracked!';}
-  else if(pct>=60){emoji='🎉';title='Good Performance!';}
-  else if(pct>=40){emoji='📚';title='Need More Practice';}
-  document.getElementById('mock-result-emoji').textContent = emoji;
-  document.getElementById('mock-result-title').textContent = title;
-  document.getElementById('mock-result-score').textContent = `Score: ${score}/${total} (${pct}%) — Time taken: ${formatTime(7200-currentMock.timeLeft)}`;
-  const rbar = document.getElementById('mock-result-bar');
-  rbar.style.width='0%'; setTimeout(()=>rbar.style.width=pct+'%',100);
-  const ana = document.getElementById('mock-topic-analysis');
-  ana.innerHTML = '<h3>Topic-wise Performance</h3>' +
-    Object.entries(topicStats).map(([,ts])=>{
-      const tp = Math.round(ts.correct/ts.total*100);
-      const col = tp>=70?'#4ade80':tp>=40?'#f59e0b':'#f87171';
-      return `<div class="mta-row">
-        <span class="mta-name">${ts.name}</span>
-        <div class="mta-bar-wrap"><div class="mta-bar" style="width:${tp}%;background:${col}"></div></div>
-        <span class="mta-meta">${ts.correct}/${ts.total} (${tp}%)</span>
+  hide('mock-arena'); show('mock-result-panel');
+  let emoji = '😞', title = 'Keep Practising!';
+  if (pct >= 80) { emoji = '🏆'; title = 'Excellent! Paper Cracked!'; }
+  else if (pct >= 60) { emoji = '🎉'; title = 'Good Performance!'; }
+  else if (pct >= 40) { emoji = '📚'; title = 'Need More Practice'; }
+  if (el('mr-orb'))   el('mr-orb').textContent   = emoji;
+  if (el('mr-title')) el('mr-title').textContent  = title;
+  if (el('mr-score')) el('mr-score').textContent  = `Score: ${score}/${total} (${pct}%)`;
+  if (el('mr-time'))  el('mr-time').textContent   = `Time taken: ${formatTime(7200 - currentMock.timeLeft)}`;
+  if (el('mr-pct'))   el('mr-pct').textContent    = pct + '%';
+  animateArc('mock-score-arc', pct);
+  if (el('mr-topic-analysis')) {
+    el('mr-topic-analysis').innerHTML = Object.entries(topicStats).map(([, ts]) => {
+      const tp  = Math.round(ts.correct / ts.total * 100);
+      const col = tp >= 70 ? '#4ade80' : tp >= 40 ? '#f59e0b' : '#f87171';
+      return `<div class="ta-row">
+        <span class="ta-name">${ts.name}</span>
+        <div class="ta-bar-wrap"><div class="ta-bar" style="width:${tp}%;background:${col}"></div></div>
+        <span class="ta-meta">${ts.correct}/${ts.total} (${tp}%)</span>
       </div>`;
     }).join('');
-  document.getElementById('mock-result-review').innerHTML = '<h3 style="margin:1rem 0 .65rem;font-size:.95rem">📋 Full Review</h3>' +
-    qs.map((q,i)=>{
-      const chosen = currentMock.answers[i];
-      const ic = chosen===q.ans;
-      return `<div class="review-item ${ic?'r-correct':'r-wrong'}">
-        <div class="review-q">Q${i+1}: ${q.q}</div>
-        <div class="review-ans">
-          ${!ic&&chosen!==undefined?`<span class="review-wrong-ans">Your: ${String.fromCharCode(65+chosen)}. ${q.opts[chosen]}</span><br/>`:''}
-          ${chosen===undefined?'<span class="review-wrong-ans">Not Attempted</span><br/>':''}
-          <strong>✅ ${String.fromCharCode(65+q.ans)}. ${q.opts[q.ans]}</strong>
-        </div>
-        <div style="font-size:.78rem;color:#7dd3fc;margin-top:.3rem">💡 ${q.expl}</div>
-      </div>`;
-    }).join('');
+  }
+  if (el('mr-review')) {
+    el('mr-review').innerHTML = '<h3 style="margin:1rem 0 .65rem;font-size:.95rem">📋 Full Review</h3>' +
+      qs.map((q, i) => {
+        const chosen = currentMock.answers[i];
+        const ic = chosen === q.ans;
+        return `<div class="review-item ${ic ? 'rc' : 'rw'}">
+          <div class="rev-q">Q${i+1}: ${q.q}</div>
+          <div class="rev-a">
+            ${!ic && chosen !== undefined ? `<span class="rev-wrong">Your: ${String.fromCharCode(65+chosen)}. ${q.opts[chosen]}</span><br/>` : ''}
+            ${chosen === undefined ? '<span class="rev-wrong">Not Attempted</span><br/>' : ''}
+            <strong>✅ ${String.fromCharCode(65+q.ans)}. ${q.opts[q.ans]}</strong>
+          </div>
+          <div class="rev-expl">💡 ${q.expl}</div>
+        </div>`;
+      }).join('');
+  }
 }
 
 function formatTime(s) {
-  const h=Math.floor(s/3600), m=Math.floor((s%3600)/60), sc=s%60;
+  const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sc = s % 60;
   return `${h}h ${m}m ${sc}s`;
 }
 
 /* ──────────────────── NOTES ──────────────────── */
 function renderNotesSidebar() {
-  document.getElementById('notes-sidebar').innerHTML = TOPICS.map(t =>
-    `<button onclick="openNote('${t.id}', this)">${t.icon} ${t.name}</button>`).join('');
+  const nav = el('notes-nav');
+  if (!nav) return;
+  nav.innerHTML = TOPICS.map(t =>
+    `<button onclick="openNote('${t.id}', this)">${t.icon} ${t.name}</button>`
+  ).join('');
 }
 function openNote(topicId, btn) {
-  document.querySelectorAll('.notes-sidebar button').forEach(b=>b.classList.remove('active-note'));
-  btn.classList.add('active-note');
-  document.getElementById('notes-content').innerHTML = NOTES[topicId] || '<p>Notes coming soon!</p>';
+  document.querySelectorAll('#notes-nav button').forEach(b => b.classList.remove('act'));
+  btn.classList.add('act');
+  const body = el('notes-body');
+  if (body) body.innerHTML = NOTES[topicId] || '<p>Notes coming soon!</p>';
 }
 
 /* ──────────────────── PROGRESS ──────────────────── */
 function renderProgress() {
   const { total, correct } = getTotals();
-  const acc = total ? Math.round(correct/total*100) : 0;
-  document.getElementById('prog-total').textContent = total;
-  document.getElementById('prog-correct').textContent = correct;
-  document.getElementById('prog-accuracy').textContent = acc + '%';
-  document.getElementById('prog-streak').textContent = bestStreak;
-  document.getElementById('prog-mocks').textContent = mockHistory.length;
-  const weak = TOPICS.filter(t => { const p=progress[t.id]; return p && p.attempted>=3 && (p.correct/p.attempted)<0.6; });
-  const strong = TOPICS.filter(t => { const p=progress[t.id]; return p && p.attempted>=3 && (p.correct/p.attempted)>=0.8; });
-  document.getElementById('weak-topics').innerHTML = weak.length
-    ? weak.map(t=>`<span class="weak-tag">${t.icon} ${t.name}</span>`).join('')
-    : '<span style="color:#64748b;font-size:.85rem">Not enough data yet — attempt at least 3 questions per topic</span>';
-  document.getElementById('topic-progress-list').innerHTML = TOPICS.map(t => {
-    const p = progress[t.id] || {attempted:0,correct:0};
-    const pct = p.attempted ? Math.round(p.correct/p.attempted*100) : 0;
-    return `<div class="tp-row">
-      <span class="tp-name">${t.icon} ${t.name}</span>
-      <div class="tp-bar-wrap"><div class="tp-bar" style="width:${pct}%"></div></div>
-      <span class="tp-meta">${p.correct}/${p.attempted} (${pct}%)</span>
-    </div>`;
-  }).join('');
-  document.getElementById('mock-history-list').innerHTML = mockHistory.length
-    ? mockHistory.map(h=>`<div class="mh-row">
-        <span>${h.title} — ${h.date}</span>
-        <span class="mh-score">${h.score}/${h.total} (${h.pct}%)</span>
-      </div>`).join('')
-    : '<p style="color:#64748b;font-size:.85rem">No mock papers attempted yet.</p>';
+  const wrong = total - correct;
+  const acc   = total ? Math.round(correct / total * 100) : 0;
+  if (el('ps-total'))   el('ps-total').textContent   = total;
+  if (el('ps-correct')) el('ps-correct').textContent = correct;
+  if (el('ps-acc'))     el('ps-acc').textContent     = acc + '%';
+  if (el('ps-streak'))  el('ps-streak').textContent  = bestStreak;
+  if (el('ps-mocks'))   el('ps-mocks').textContent   = mockHistory.length;
+  const weak   = TOPICS.filter(t => { const p = progress[t.id]; return p && p.attempted >= 3 && (p.correct / p.attempted) < 0.6; });
+  const strong = TOPICS.filter(t => { const p = progress[t.id]; return p && p.attempted >= 3 && (p.correct / p.attempted) >= 0.8; });
+  if (el('weak-list'))   el('weak-list').innerHTML   = weak.length
+    ? weak.map(t => `<span class="area-tag weak">${t.icon} ${t.name}</span>`).join('')
+    : '<span style="color:#64748b;font-size:.85rem">Attempt ≥3 questions per topic to see weak areas</span>';
+  if (el('strong-list')) el('strong-list').innerHTML = strong.length
+    ? strong.map(t => `<span class="area-tag strong">${t.icon} ${t.name}</span>`).join('')
+    : '<span style="color:#64748b;font-size:.85rem">Keep practising to build strong topics!</span>';
+  if (el('topic-bars')) {
+    el('topic-bars').innerHTML = TOPICS.map(t => {
+      const p   = progress[t.id] || { attempted: 0, correct: 0 };
+      const pct = p.attempted ? Math.round(p.correct / p.attempted * 100) : 0;
+      const col = pct >= 70 ? '#4ade80' : pct >= 40 ? '#f59e0b' : '#f87171';
+      return `<div class="topic-bar-row">
+        <span class="tbr-name">${t.icon} ${t.name}</span>
+        <div class="tbr-bar-wrap"><div class="tbr-bar" style="width:${pct}%;background:${col}"></div></div>
+        <span class="tbr-meta">${p.correct}/${p.attempted} (${pct}%)</span>
+      </div>`;
+    }).join('');
+  }
+  if (el('mock-history')) {
+    el('mock-history').innerHTML = mockHistory.length
+      ? mockHistory.map(h => `<div class="mh-row">
+          <span>${h.title} — ${h.date}</span>
+          <span class="mh-score" style="color:${h.pct>=60?'#4ade80':'#f87171'}">${h.score}/${h.total} (${h.pct}%)</span>
+        </div>`).join('')
+      : '<p style="color:#64748b;font-size:.85rem">No mock papers attempted yet.</p>';
+  }
 }
 
 function resetProgress() {
-  if(!confirm('Reset ALL progress? This cannot be undone.')) return;
-  progress={}; streak=0; bestStreak=0; mockHistory=[];
-  MOCK_PAPERS.forEach(p=>p.qs=null);
-  saveProgress(); renderProgress(); alert('Progress reset!');
+  if (!confirm('Reset ALL progress? This cannot be undone.')) return;
+  progress = {}; streak = 0; bestStreak = 0; mockHistory = [];
+  MOCK_PAPERS.forEach(p => p.qs = null);
+  saveProgress(); renderProgress(); renderHome();
 }
 
 /* ──────────────────── AI TUTOR ──────────────────── */
 function initAI() {
-  if(nvApiKey) {
-    document.getElementById('ai-setup').classList.add('hidden');
-    document.getElementById('ai-chat-box').classList.remove('hidden');
-  } else {
-    document.getElementById('ai-setup').classList.remove('hidden');
-    document.getElementById('ai-chat-box').classList.add('hidden');
-  }
+  if (nvApiKey) { hide('ai-key-gate'); show('ai-chat'); }
+  else          { show('ai-key-gate'); hide('ai-chat'); }
 }
 
-document.getElementById('ai-key-save-btn').addEventListener('click', () => {
-  const key = document.getElementById('ai-key-input').value.trim();
-  if(!key || !key.startsWith('nvapi-')) { alert('Please enter a valid NVIDIA API key starting with nvapi-'); return; }
+el('ai-key-btn').addEventListener('click', () => {
+  const key = el('ai-key-input').value.trim();
+  if (!key || !key.startsWith('nvapi-')) { alert('Enter a valid NVIDIA API key starting with nvapi-'); return; }
   nvApiKey = key;
   localStorage.setItem('jkssb_nvkey', key);
   initAI();
-  addBotMessage('API key saved! I am ready to answer your JKSSB FMPHW/MMPHW questions. Ask me anything! 🏥');
+  addBotMsg('🏥 AI Tutor activated! I\'m ready to help you crack JKSSB FMPHW/MMPHW 2025. Ask me anything about the syllabus!');
 });
 
-document.getElementById('ai-change-key-btn').addEventListener('click', () => {
-  nvApiKey = '';
-  localStorage.removeItem('jkssb_nvkey');
-  document.getElementById('ai-key-input').value = '';
+el('ai-reset-key').addEventListener('click', () => {
+  nvApiKey = ''; localStorage.removeItem('jkssb_nvkey');
+  if (el('ai-key-input')) el('ai-key-input').value = '';
   initAI();
 });
 
-document.querySelectorAll('.quick-btn').forEach(btn => {
+document.querySelectorAll('.qchip').forEach(btn => {
   btn.addEventListener('click', () => {
-    document.getElementById('ai-user-input').value = btn.dataset.q;
-    sendAIMessage();
+    if (el('chat-input')) el('chat-input').value = btn.dataset.q;
+    sendAI();
   });
 });
 
-document.getElementById('ai-send-btn').addEventListener('click', sendAIMessage);
-document.getElementById('ai-user-input').addEventListener('keydown', e => {
-  if(e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendAIMessage(); }
+el('send-btn').addEventListener('click', sendAI);
+el('chat-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendAI(); }
 });
 
-async function sendAIMessage() {
-  const input = document.getElementById('ai-user-input');
-  const text = input.value.trim();
-  if(!text) return;
-  if(!nvApiKey) { alert('Please enter your NVIDIA API key first.'); return; }
-  input.value = '';
-  addUserMessage(text);
-  const typingId = addTyping();
+async function sendAI() {
+  const inp  = el('chat-input');
+  const text = inp.value.trim();
+  if (!text) return;
+  if (!nvApiKey) { alert('Please enter your NVIDIA API key first.'); return; }
+  inp.value = '';
+  addUserMsg(text);
+  const tid = addTypingIndicator();
   try {
+    const model = el('ai-model') ? el('ai-model').value : 'meta/llama-3.3-70b-instruct';
     const res = await fetch('https://integrate.api.nvidia.com/v1/chat/completions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + nvApiKey },
       body: JSON.stringify({
-        model: document.getElementById('ai-model-select').value,
+        model,
         messages: [
-          { role: 'system', content: `You are an expert health education tutor specialising in the JKSSB FMPHW (Female Multi Purpose Health Worker) and MMPHW (Male Multi Purpose Health Worker) 2025 examination for Jammu & Kashmir. You answer questions clearly, accurately, and in an exam-focused way. Use bullet points, tables, and key highlights. Cover topics: Maternal & Child Health, ANC, immunization schedules, family planning, nutrition deficiency diseases, national health programs (NHM, NTEP, NACP, NPCDCS), first aid, CPR, anatomy, vital signs, environmental health, biomedical waste management, health statistics, essential medicines. Always highlight exam-important points with ⭐. Keep answers concise and practical.` },
+          { role: 'system', content: 'You are an expert tutor for the JKSSB FMPHW/MMPHW 2025 health worker exam in Jammu & Kashmir. Answer clearly with bullet points, tables, and ⭐ for exam-important points. Topics: MCH, ANC, immunization UIP schedule, cold chain, family planning, nutrition deficiencies, national health programs (NHM, NTEP, NACP, NPCDCS, RMNCH+A), first aid, CPR, anatomy, vital signs, environmental health, biomedical waste, health statistics, essential medicines. Be concise and practical.' },
           { role: 'user', content: text }
         ],
         max_tokens: 1024, temperature: 0.4, stream: false
       })
     });
-    removeTyping(typingId);
-    if(!res.ok) {
-      const err = await res.json().catch(()=>({}));
-      addBotMessage('❌ API Error: ' + (err.message || res.status + ' ' + res.statusText) + '. Please check your API key.');
+    removeTypingIndicator(tid);
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      addBotMsg('❌ API Error: ' + (err.message || res.status) + '. Check your API key.');
       return;
     }
-    const data = await res.json();
+    const data  = await res.json();
     const reply = data.choices?.[0]?.message?.content || 'No response received.';
-    addBotMessage(reply);
-  } catch(e) {
-    removeTyping(typingId);
-    addBotMessage('❌ Network error: ' + e.message + '. Check your internet connection and API key.');
+    addBotMsg(reply);
+  } catch (e) {
+    removeTypingIndicator(tid);
+    addBotMsg('❌ Network error: ' + e.message);
   }
 }
 
-function addUserMessage(text) {
-  const msgs = document.getElementById('ai-messages');
-  msgs.innerHTML += `<div class="ai-msg ai-msg-user"><div class="ai-avatar">👤</div><div class="ai-bubble">${escapeHtml(text)}</div></div>`;
-  msgs.scrollTop = msgs.scrollHeight;
+function addUserMsg(text) {
+  const w = el('chat-window');
+  if (!w) return;
+  w.innerHTML += `<div class="chat-msg user"><div class="chat-avatar">👤</div><div class="chat-bubble">${esc(text)}</div></div>`;
+  w.scrollTop = w.scrollHeight;
 }
 
-let typingCounter = 0;
-function addTyping() {
-  const id = 'typing-' + (++typingCounter);
-  const msgs = document.getElementById('ai-messages');
-  msgs.innerHTML += `<div class="ai-msg" id="${id}"><div class="ai-avatar">🤖</div><div class="ai-bubble"><div class="ai-typing"><span></span><span></span><span></span></div></div></div>`;
-  msgs.scrollTop = msgs.scrollHeight;
+let _tc = 0;
+function addTypingIndicator() {
+  const id = 'typ-' + (++_tc);
+  const w  = el('chat-window');
+  if (!w) return id;
+  w.innerHTML += `<div class="chat-msg bot" id="${id}"><div class="chat-avatar">🤖</div><div class="chat-bubble"><span class="typing-dots"><span></span><span></span><span></span></span></div></div>`;
+  w.scrollTop = w.scrollHeight;
   return id;
 }
-function removeTyping(id) { document.getElementById(id)?.remove(); }
+function removeTypingIndicator(id) { document.getElementById(id)?.remove(); }
 
-function addBotMessage(text) {
-  const msgs = document.getElementById('ai-messages');
-  msgs.innerHTML += `<div class="ai-msg"><div class="ai-avatar">🤖</div><div class="ai-bubble">${formatAI(text)}</div></div>`;
-  msgs.scrollTop = msgs.scrollHeight;
+function addBotMsg(text) {
+  const w = el('chat-window');
+  if (!w) return;
+  w.innerHTML += `<div class="chat-msg bot"><div class="chat-avatar">🤖</div><div class="chat-bubble">${fmtAI(text)}</div></div>`;
+  w.scrollTop = w.scrollHeight;
 }
 
-function escapeHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
-function formatAI(text) {
-  return text
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function fmtAI(t) {
+  return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
     .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
     .replace(/\*(.+?)\*/g,'<em>$1</em>')
     .replace(/`(.+?)`/g,'<code>$1</code>')
@@ -878,5 +973,79 @@ function formatAI(text) {
     .replace(/\n/g,'<br/>');
 }
 
+/* ──────────────────── PARTICLE CANVAS ──────────────────── */
+(function initParticles() {
+  const canvas = document.getElementById('bg-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  for (let i = 0; i < 80; i++) {
+    particles.push({
+      x: Math.random() * W, y: Math.random() * H,
+      r: Math.random() * 2 + 0.5,
+      vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
+      a: Math.random() * 0.5 + 0.1
+    });
+  }
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(0,212,255,${p.a})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ──────────────────── CONFETTI ──────────────────── */
+const _confCanvas = document.getElementById('confetti-canvas');
+const _confCtx    = _confCanvas ? _confCanvas.getContext('2d') : null;
+let   _confetti   = [];
+if (_confCanvas) {
+  _confCanvas.width  = window.innerWidth;
+  _confCanvas.height = window.innerHeight;
+  window.addEventListener('resize', () => { _confCanvas.width = window.innerWidth; _confCanvas.height = window.innerHeight; });
+}
+function launchConfetti() {
+  if (!_confCtx) return;
+  const colors = ['#00d4ff','#7c3aed','#00ff88','#ffd700','#ff6b35','#ff2d78'];
+  for (let i = 0; i < 40; i++) {
+    _confetti.push({
+      x: window.innerWidth / 2, y: window.innerHeight / 3,
+      vx: (Math.random() - 0.5) * 12, vy: (Math.random() - 1.2) * 10,
+      r: Math.random() * 5 + 3, c: colors[Math.floor(Math.random() * colors.length)],
+      life: 1, spin: Math.random() * 0.3
+    });
+  }
+  if (_confetti.length === 40) animateConfetti();
+}
+function animateConfetti() {
+  if (!_confCtx) return;
+  _confCtx.clearRect(0, 0, _confCanvas.width, _confCanvas.height);
+  _confetti = _confetti.filter(p => p.life > 0);
+  _confetti.forEach(p => {
+    p.x += p.vx; p.y += p.vy; p.vy += 0.3; p.life -= 0.015;
+    _confCtx.globalAlpha = p.life;
+    _confCtx.fillStyle = p.c;
+    _confCtx.fillRect(p.x, p.y, p.r, p.r * 0.5);
+  });
+  _confCtx.globalAlpha = 1;
+  if (_confetti.length > 0) requestAnimationFrame(animateConfetti);
+  else _confCtx.clearRect(0, 0, _confCanvas.width, _confCanvas.height);
+}
+
 /* ──────────────────── INIT ──────────────────── */
 renderHome();
+updateHeaderStreak();
