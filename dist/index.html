@@ -1,0 +1,268 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JKSSB FMPHW / MMPHW 2025 — Complete Exam Prep</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="/Project111.4744fae1.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-icon">🏥</span>
+      <div>
+        <span class="logo-title">JKSSB Health Worker</span>
+        <span class="logo-sub">FMPHW / MMPHW 2025 — Complete Prep</span>
+      </div>
+    </div>
+    <nav class="top-nav">
+      <button class="nav-btn active" data-page="home">🏠 Home</button>
+      <button class="nav-btn" data-page="quiz">📝 Practice</button>
+      <button class="nav-btn" data-page="mock">📋 Mock Papers</button>
+      <button class="nav-btn" data-page="notes">📚 Notes</button>
+      <button class="nav-btn" data-page="ai">🤖 AI Tutor</button>
+      <button class="nav-btn" data-page="progress">📊 Progress</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══════ HOME ═══════ -->
+<main id="page-home" class="page active">
+  <div class="hero">
+    <h1>Crack JKSSB FMPHW / MMPHW 2025 <span class="highlight">With Full Confidence</span></h1>
+    <p class="hero-sub">200+ MCQs · Previous Year Paper Analysis · AI Tutor · Topic Notes · Mock Tests</p>
+    <div style="flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 1.5rem; display: flex">
+      <button class="cta-btn pulse" onclick="openPage('quiz')">Start Practising →</button>
+      <button class="cta-btn outline" onclick="openPage('mock')">📋 Take Mock Paper</button>
+    </div>
+  </div>
+
+  <section class="topic-cards-section">
+    <h2>Practice by Topic</h2>
+    <div class="topic-grid" id="topic-grid"></div>
+  </section>
+
+  <section class="stats-section">
+    <div class="stat-card"><span id="home-total-q" class="stat-num">0</span><span class="stat-label">Attempted</span></div>
+    <div class="stat-card"><span id="home-correct" class="stat-num">0</span><span class="stat-label">Correct ✅</span></div>
+    <div class="stat-card"><span id="home-streak" class="stat-num">0</span><span class="stat-label">Best Streak 🔥</span></div>
+    <div class="stat-card"><span id="home-accuracy" class="stat-num">0%</span><span class="stat-label">Accuracy</span></div>
+    <div class="stat-card"><span id="home-mocks" class="stat-num">0</span><span class="stat-label">Mock Papers</span></div>
+  </section>
+
+  <section class="pyq-banner">
+    <div class="pyq-inner">
+      <h2>📜 Previous Year Paper Topics (JKSSB FMPHW/MMPHW)</h2>
+      <p>Based on analysis of JKSSB FMPHW/MMPHW exams (2018, 2019, 2021, 2022, 2023), the most repeated topics are:</p>
+      <div class="pyq-tags">
+        <span class="tag">ANC &amp; Safe Delivery</span><span class="tag">Immunization Schedule</span>
+        <span class="tag">Family Planning Methods</span><span class="tag">ASHA/ANM Roles</span>
+        <span class="tag">Nutrition Deficiencies</span><span class="tag">National Programs (NHM/NTEP/NACP)</span>
+        <span class="tag">First Aid &amp; CPR</span><span class="tag">Cold Chain</span>
+        <span class="tag">Malaria/TB/Dengue</span><span class="tag">Vital Signs</span>
+        <span class="tag">ORS Preparation</span><span class="tag">BMW Management</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ═══════ QUIZ ═══════ -->
+<main id="page-quiz" class="page">
+  <div id="quiz-topic-selector">
+    <h2>Practice Quiz</h2>
+    <div class="selector-row">
+      <select id="quiz-topic-select"><option value="all">🔀 All Topics (Random)</option></select>
+      <select id="quiz-mode-select">
+        <option value="learn">📖 Learn Mode (explanation after each Q)</option>
+        <option value="test">🎯 Test Mode (score at end)</option>
+      </select>
+      <select id="quiz-count-select">
+        <option value="10">10 Questions</option>
+        <option value="20">20 Questions</option>
+        <option value="30">30 Questions</option>
+        <option value="50">50 Questions</option>
+        <option value="all">All Questions</option>
+      </select>
+    </div>
+    <button class="cta-btn" id="start-quiz-btn">Start Quiz</button>
+  </div>
+
+  <div id="quiz-area" class="hidden">
+    <div class="quiz-meta">
+      <span id="q-counter">Q 1 / 10</span>
+      <span id="q-topic-label" class="topic-badge"></span>
+      <span id="q-score-live">Score: 0</span>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar" id="q-progress-bar"></div></div>
+    <div class="question-card" id="question-card">
+      <p class="q-text" id="q-text"></p>
+      <div class="options" id="q-options"></div>
+    </div>
+    <div class="explanation-box hidden" id="explanation-box">
+      <span class="expl-label">📘 Explanation</span>
+      <p id="expl-text"></p>
+    </div>
+    <div class="quiz-nav">
+      <button class="nav-btn-quiz" id="btn-next" style="display: none">Next Question →</button>
+      <button class="nav-btn-quiz" id="btn-finish" style="display: none">Finish &amp; See Result</button>
+    </div>
+  </div>
+
+  <div id="quiz-result" class="hidden">
+    <div class="result-card">
+      <div class="result-emoji" id="result-emoji">🎉</div>
+      <h2 id="result-title">Quiz Complete!</h2>
+      <p id="result-score-text"></p>
+      <div class="result-bar-wrap"><div class="result-bar" id="result-bar"></div></div>
+      <div id="result-review"></div>
+      <div class="result-btns">
+        <button class="cta-btn" onclick="retakeQuiz()">🔁 Retake Quiz</button>
+        <button class="cta-btn outline" onclick="resetQuizUI()">New Quiz</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ═══════ MOCK PAPERS ═══════ -->
+<main id="page-mock" class="page">
+  <h2>📋 Mock Test Papers</h2>
+  <p style="color: #94a3b8; margin-bottom: 1.5rem">Full-length timed mock papers based on JKSSB FMPHW/MMPHW exam pattern. 100 questions · 2 hours · Marks: +1 correct, 0 wrong (no negative marking)</p>
+
+  <div id="mock-selector">
+    <div class="mock-paper-grid" id="mock-paper-grid"></div>
+  </div>
+
+  <div id="mock-area" class="hidden">
+    <div class="mock-header">
+      <div>
+        <strong id="mock-title">Mock Paper 1</strong>
+        <span id="mock-q-counter" class="topic-badge" style="margin-left: .5rem">Q 1/100</span>
+      </div>
+      <div class="mock-timer-block">
+        <span>⏱️</span>
+        <span id="mock-timer" class="mock-timer">02:00:00</span>
+      </div>
+      <div>Score: <strong id="mock-score-live">0</strong></div>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar" id="mock-progress-bar"></div></div>
+    <div class="question-card">
+      <p class="q-text" id="mock-q-text"></p>
+      <div class="options" id="mock-q-options"></div>
+    </div>
+    <div class="quiz-nav">
+      <button class="nav-btn-quiz" id="mock-btn-prev">← Prev</button>
+      <button class="nav-btn-quiz" id="mock-btn-next">Next →</button>
+      <button class="nav-btn-quiz" id="mock-btn-submit" style="background: linear-gradient(135deg, #f59e0b, #ef4444)">Submit Paper</button>
+    </div>
+    <div id="mock-answer-grid" class="mock-answer-grid"></div>
+  </div>
+
+  <div id="mock-result" class="hidden">
+    <div class="result-card">
+      <div class="result-emoji" id="mock-result-emoji">📋</div>
+      <h2 id="mock-result-title"></h2>
+      <p id="mock-result-score"></p>
+      <div class="result-bar-wrap"><div class="result-bar" id="mock-result-bar"></div></div>
+      <div id="mock-topic-analysis" class="mock-topic-analysis"></div>
+      <div id="mock-result-review"></div>
+      <div class="result-btns">
+        <button class="cta-btn" onclick="document.getElementById('mock-result').classList.add('hidden');document.getElementById('mock-selector').classList.remove('hidden')">← Back to Papers</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ═══════ NOTES ═══════ -->
+<main id="page-notes" class="page">
+  <h2>Study Notes — Topic Wise</h2>
+  <div class="notes-layout">
+    <aside class="notes-sidebar" id="notes-sidebar"></aside>
+    <article class="notes-content" id="notes-content">
+      <p class="placeholder-text">👈 Select a topic from the left to read detailed notes.</p>
+    </article>
+  </div>
+</main>
+
+<!-- ═══════ AI TUTOR ═══════ -->
+<main id="page-ai" class="page">
+  <h2>🤖 AI Tutor — Ask Any FMPHW/MMPHW Doubt</h2>
+
+  <div id="ai-setup" class="ai-setup-box">
+    <div class="ai-key-form">
+      <p>Enter your <strong>NVIDIA NIM API Key</strong> (starts with <code>nvapi-...</code>). It is stored only in your browser and never sent anywhere except NVIDIA's servers.</p>
+      <div class="ai-key-row">
+        <input type="password" id="ai-key-input" placeholder="nvapi-xxxxxxxxxxxxxxxx" class="ai-key-field">
+        <button class="cta-btn" id="ai-key-save-btn">Save &amp; Activate</button>
+      </div>
+      <p class="ai-note">💡 Get your FREE key at <strong>build.nvidia.com</strong> → API Keys. Free tier gives you many requests per day.</p>
+    </div>
+  </div>
+
+  <div id="ai-chat-box" class="hidden">
+    <div class="ai-model-row">
+      <select id="ai-model-select" class="ai-model-sel">
+        <option value="meta/llama-3.3-70b-instruct">Llama 3.3 70B (Best — Recommended)</option>
+        <option value="meta/llama-3.1-8b-instruct">Llama 3.1 8B (Faster)</option>
+        <option value="nvidia/llama-3.1-nemotron-70b-instruct">Nemotron 70B (NVIDIA)</option>
+        <option value="mistralai/mixtral-8x7b-instruct-v0.1">Mixtral 8x7B</option>
+      </select>
+      <button class="cta-btn outline" id="ai-change-key-btn" style="padding: .4rem .9rem; font-size: .8rem">Change Key</button>
+    </div>
+
+    <div class="ai-quick-prompts">
+      <p style="color: #94a3b8; margin-bottom: .5rem; font-size: .85rem">Quick Questions:</p>
+      <button class="quick-btn" data-q="Explain the complete UIP immunisation schedule of India with all vaccines and ages">Immunisation Schedule</button>
+      <button class="quick-btn" data-q="Explain ANC visits, what tests and medicines are given at each visit under RMNCH+A">ANC Visits &amp; Tests</button>
+      <button class="quick-btn" data-q="Compare Kwashiorkor and Marasmus in a table — causes, features, treatment">Kwashiorkor vs Marasmus</button>
+      <button class="quick-btn" data-q="Explain ASHA's roles and responsibilities under NHM and what incentives she receives">ASHA Roles</button>
+      <button class="quick-btn" data-q="What is the Cold Chain in immunisation? Explain all equipment and temperatures">Cold Chain Equipment</button>
+      <button class="quick-btn" data-q="Explain all family planning methods, their Pearl Index and which ones ANM/ASHA can provide">Family Planning Methods</button>
+      <button class="quick-btn" data-q="How to do CPR? Give step-by-step for adult and child">CPR Steps</button>
+      <button class="quick-btn" data-q="Explain JSSK, JSY and PMMVY schemes — who is eligible and what benefits they get">JSSK / JSY / PMMVY</button>
+      <button class="quick-btn" data-q="What are the important health programmes in India — NHM, NTEP, NACP, NPCDCS?">Key Health Programs</button>
+      <button class="quick-btn" data-q="Give me 10 most important MCQs with answers for JKSSB FMPHW exam">Give Me MCQs</button>
+    </div>
+
+    <div class="ai-messages" id="ai-messages">
+      <div class="ai-msg ai-msg-bot">
+        <div class="ai-avatar">🤖</div>
+        <div class="ai-bubble">Namaste! I am your JKSSB FMPHW/MMPHW AI Tutor. Ask me any health-related question for your exam — immunisation, ANC, diseases, national programs, first aid, anatomy — anything! I will give you clear, exam-focused answers. 🏥</div>
+      </div>
+    </div>
+
+    <div class="ai-input-row">
+      <textarea id="ai-user-input" class="ai-input" placeholder="Ask your doubt here... e.g. 'Explain the difference between BCG and DPT vaccine'" rows="2"></textarea>
+      <button class="cta-btn" id="ai-send-btn">Send ➤</button>
+    </div>
+  </div>
+</main>
+
+<!-- ═══════ PROGRESS ═══════ -->
+<main id="page-progress" class="page">
+  <h2>Your Performance Dashboard</h2>
+  <div class="progress-overview">
+    <div class="big-stat"><span id="prog-total">0</span><br>Total Attempted</div>
+    <div class="big-stat"><span id="prog-correct">0</span><br>Correct</div>
+    <div class="big-stat"><span id="prog-accuracy">0%</span><br>Accuracy</div>
+    <div class="big-stat"><span id="prog-streak">0</span><br>Best Streak 🔥</div>
+    <div class="big-stat"><span id="prog-mocks">0</span><br>Mock Papers Done</div>
+  </div>
+
+  <h3>Weak Areas (Needs More Practice)</h3>
+  <div id="weak-topics" class="weak-topics-list"></div>
+
+  <h3 style="margin-top: 2rem">Topic-wise Performance</h3>
+  <div id="topic-progress-list" class="topic-progress-list"></div>
+
+  <h3 style="margin-top: 2rem">Mock Paper History</h3>
+  <div id="mock-history-list"></div>
+
+  <button class="cta-btn outline danger" style="margin-top: 2rem" onclick="resetProgress()">🗑️ Reset All Progress</button>
+</main>
+
+<script src="/Project111.08fc64f4.js"></script>
+
+
+<script src="/Project111.3464ddca.js"></script></body></html>

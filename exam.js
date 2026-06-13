@@ -814,7 +814,10 @@ async function sendAIMessage() {
   addUserMessage(text);
   const typingId = addTyping();
   try {
-    const res = await fetch('https://integrate.api.nvidia.com/v1/chat/completions', {
+    const apiEndpoint = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+      ? '/api/nvidia/v1/chat/completions'
+      : 'https://integrate.api.nvidia.com/v1/chat/completions';
+    const res = await fetch(apiEndpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + nvApiKey },
       body: JSON.stringify({
