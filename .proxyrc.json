@@ -1,0 +1,9 @@
+{
+  "/api/nvidia": {
+    "target": "https://integrate.api.nvidia.com",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api/nvidia": ""
+    }
+  }
+}
