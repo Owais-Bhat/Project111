@@ -1480,8 +1480,10 @@ function openPage(id) {
   if (id === 'quiz')     resetQuizUI();
   if (id === 'mock')     renderMockSelector();
   if (id === 'notes')    renderNotesSidebar();
-  if (id === 'ai')       initAI();
+  if (id === 'ai')       { initAI(); renderPlannerMeta(); }
   if (id === 'progress') renderProgress();
+  if (id === 'bookmarks') renderBookmarks();
+  if (id === 'daily')    renderDailyHome();
 }
 document.querySelectorAll('.nav-btn[data-page]').forEach(btn => {
   btn.addEventListener('click', () => openPage(btn.dataset.page));
@@ -1593,6 +1595,8 @@ function renderQuestion() {
   el('flip-card').classList.remove('flipped');
   /* hide test-mode-nav */
   hide('test-mode-nav');
+  /* update bookmark button state */
+  updateBookmarkBtn();
 }
 
 function selectOption(chosen) {
@@ -2099,6 +2103,470 @@ function animateConfetti() {
   if (_confetti.length > 0) requestAnimationFrame(animateConfetti);
   else _confCtx.clearRect(0, 0, _confCanvas.width, _confCanvas.height);
 }
+
+/* ──────────────────── BOOKMARKS ──────────────────── */
+let bookmarks = JSON.parse(localStorage.getItem('jkssb_bookmarks') || '[]');
+
+function saveBookmarks() {
+  localStorage.setItem('jkssb_bookmarks', JSON.stringify(bookmarks));
+}
+
+function toggleBookmark() {
+  const q = currentQuiz.questions[currentQuiz.idx];
+  if (!q) return;
+  const key = q.q;
+  const idx = bookmarks.findIndex(b => b.q === key);
+  const btn = el('bookmark-btn');
+  if (idx === -1) {
+    bookmarks.push(q);
+    saveBookmarks();
+    if (btn) { btn.textContent = '⭐'; btn.classList.add('bookmarked'); }
+  } else {
+    bookmarks.splice(idx, 1);
+    saveBookmarks();
+    if (btn) { btn.textContent = '🔖'; btn.classList.remove('bookmarked'); }
+  }
+}
+
+function updateBookmarkBtn() {
+  const q = currentQuiz.questions[currentQuiz.idx];
+  const btn = el('bookmark-btn');
+  if (!btn || !q) return;
+  const saved = bookmarks.some(b => b.q === q.q);
+  btn.textContent = saved ? '⭐' : '🔖';
+  btn.classList.toggle('bookmarked', saved);
+}
+
+function renderBookmarks() {
+  const list = el('bookmarks-list');
+  const empty = el('bookmarks-empty');
+  const clearBtn = el('clear-bookmarks-btn');
+  if (!list) return;
+  if (!bookmarks.length) {
+    list.innerHTML = '';
+    if (empty) empty.classList.remove('hidden');
+    if (clearBtn) clearBtn.style.display = 'none';
+    return;
+  }
+  if (empty) empty.classList.add('hidden');
+  if (clearBtn) clearBtn.style.display = 'inline-block';
+  list.innerHTML = bookmarks.map((q, i) => {
+    const topicName = TOPICS.find(t => t.id === q.topic)?.name || q.topic;
+    return `<div class="bookmark-card">
+      <div class="bk-meta"><span class="topic-chip">${topicName}</span><button class="bk-remove" data-idx="${i}" title="Remove bookmark">✕</button></div>
+      <p class="bk-q">${q.q}</p>
+      <div class="bk-opts">${q.opts.map((o, oi) => `<div class="bk-opt ${oi === q.ans ? 'bk-correct' : ''}">${String.fromCharCode(65+oi)}. ${o}</div>`).join('')}</div>
+      <div class="bk-expl">💡 ${q.expl}</div>
+    </div>`;
+  }).join('');
+  list.querySelectorAll('.bk-remove').forEach(btn => {
+    btn.addEventListener('click', () => {
+      bookmarks.splice(parseInt(btn.dataset.idx), 1);
+      saveBookmarks();
+      renderBookmarks();
+    });
+  });
+}
+
+el('clear-bookmarks-btn') && el('clear-bookmarks-btn').addEventListener('click', () => {
+  if (confirm('Clear all bookmarks?')) { bookmarks = []; saveBookmarks(); renderBookmarks(); }
+});
+
+/* ──────────────────── DAILY CHALLENGE ──────────────────── */
+let dailyState = JSON.parse(localStorage.getItem('jkssb_daily') || '{}');
+/* dailyState = { streak, bestStreak, lastDate, completedToday } */
+
+function getTodayStr() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function getDailyQuestions() {
+  const today = getTodayStr();
+  /* seed shuffle by date so same 10 questions appear all day */
+  const seed = today.split('-').reduce((a, v) => a + parseInt(v), 0);
+  const shuffled = [...QUESTIONS].sort((a, b) => {
+    const ha = Math.sin(seed + QUESTIONS.indexOf(a)) * 10000;
+    const hb = Math.sin(seed + QUESTIONS.indexOf(b)) * 10000;
+    return (ha - Math.floor(ha)) - (hb - Math.floor(hb));
+  });
+  return shuffled.slice(0, 10);
+}
+
+let dailyQuiz = { questions: [], idx: 0, score: 0, answers: [] };
+
+function renderDailyHome() {
+  const today = getTodayStr();
+  if (dailyState.lastDate !== today) {
+    dailyState.completedToday = false;
+  }
+  if (el('daily-streak-num')) el('daily-streak-num').textContent = dailyState.streak || 0;
+  if (el('daily-best-streak')) el('daily-best-streak').textContent = dailyState.bestStreak || 0;
+  const statusEl = el('daily-done-today');
+  if (statusEl) statusEl.textContent = dailyState.completedToday ? '✅ Done!' : '⏳ Pending';
+  const startBtn = el('start-daily-btn');
+  if (startBtn) startBtn.textContent = dailyState.completedToday ? '🔁 Redo Today\'s Challenge' : '📅 Start Today\'s Challenge';
+  show('daily-home'); hide('daily-arena'); hide('daily-result');
+}
+
+function startDailyChallenge() {
+  dailyQuiz = { questions: getDailyQuestions(), idx: 0, score: 0, answers: [] };
+  hide('daily-home'); show('daily-arena'); hide('daily-result');
+  el('dc-flip-card').classList.remove('flipped');
+  renderDailyQuestion();
+}
+
+function renderDailyQuestion() {
+  const q = dailyQuiz.questions[dailyQuiz.idx];
+  const total = 10;
+  if (el('dc-counter')) el('dc-counter').textContent = `Q ${dailyQuiz.idx + 1} / ${total}`;
+  if (el('dc-num-badge')) el('dc-num-badge').textContent = `Q${dailyQuiz.idx + 1}`;
+  if (el('dc-score')) el('dc-score').textContent = dailyQuiz.score;
+  if (el('dc-streak')) el('dc-streak').textContent = '🔥' + streak;
+  if (el('dc-bar')) el('dc-bar').style.width = (dailyQuiz.idx / total * 100) + '%';
+  if (el('dc-q-text')) el('dc-q-text').textContent = q.q;
+  if (el('dc-options')) {
+    el('dc-options').innerHTML = q.opts.map((opt, i) =>
+      `<button class="opt-btn" data-idx="${i}"><span class="opt-label">${String.fromCharCode(65+i)}</span>${opt}</button>`
+    ).join('');
+    el('dc-options').querySelectorAll('.opt-btn').forEach(btn =>
+      btn.addEventListener('click', () => selectDailyOption(parseInt(btn.dataset.idx)))
+    );
+  }
+  el('dc-flip-card').classList.remove('flipped');
+}
+
+function selectDailyOption(chosen) {
+  const q = dailyQuiz.questions[dailyQuiz.idx];
+  const isCorrect = chosen === q.ans;
+  const isLast = dailyQuiz.idx === 9;
+  dailyQuiz.answers.push({ chosen, correct: q.ans, isCorrect, q });
+  if (isCorrect) { dailyQuiz.score++; launchConfetti(); }
+  recordAnswer(q.topic, isCorrect);
+  el('dc-options').querySelectorAll('.opt-btn').forEach((btn, i) => {
+    btn.disabled = true;
+    if (i === q.ans) btn.classList.add('correct');
+    if (i === chosen && !isCorrect) btn.classList.add('wrong');
+  });
+  if (el('dc-score')) el('dc-score').textContent = dailyQuiz.score;
+  if (el('dc-expl')) el('dc-expl').textContent = q.expl;
+  if (el('dc-next-btn')) el('dc-next-btn').textContent = isLast ? 'Show Results 🏆' : 'Next Question →';
+  setTimeout(() => el('dc-flip-card').classList.add('flipped'), 500);
+}
+
+el('dc-next-btn') && el('dc-next-btn').addEventListener('click', () => {
+  el('dc-flip-card').classList.remove('flipped');
+  setTimeout(() => {
+    if (dailyQuiz.idx >= 9) { showDailyResult(); return; }
+    dailyQuiz.idx++;
+    renderDailyQuestion();
+  }, 400);
+});
+
+function showDailyResult() {
+  hide('daily-arena');
+  show('daily-result');
+  const pct = Math.round(dailyQuiz.score / 10 * 100);
+  const today = getTodayStr();
+  if (!dailyState.completedToday || dailyState.lastDate !== today) {
+    if (dailyState.lastDate === getPreviousDayStr()) {
+      dailyState.streak = (dailyState.streak || 0) + 1;
+    } else if (dailyState.lastDate !== today) {
+      dailyState.streak = 1;
+    }
+    dailyState.bestStreak = Math.max(dailyState.streak || 0, dailyState.bestStreak || 0);
+    dailyState.lastDate = today;
+    dailyState.completedToday = true;
+    localStorage.setItem('jkssb_daily', JSON.stringify(dailyState));
+  }
+  let emoji = '😞', title = 'Keep Going!';
+  if (pct >= 90) { emoji = '🏆'; title = 'Perfect Score! Brilliant!'; launchConfetti(); setTimeout(launchConfetti, 300); }
+  else if (pct >= 70) { emoji = '🎉'; title = 'Great Job!'; launchConfetti(); }
+  else if (pct >= 50) { emoji = '👍'; title = 'Good Effort!'; }
+  if (el('dc-r-orb')) el('dc-r-orb').textContent = emoji;
+  if (el('dc-r-title')) el('dc-r-title').textContent = title;
+  if (el('dc-r-pct')) el('dc-r-pct').textContent = pct + '%';
+  if (el('dc-r-detail')) el('dc-r-detail').textContent = `${dailyQuiz.score} / 10 correct`;
+  const badgeEl = el('dc-streak-badge');
+  if (badgeEl) badgeEl.textContent = `🔥 Day Streak: ${dailyState.streak} days`;
+  animateArc('dc-score-arc', pct);
+}
+
+function getPreviousDayStr() {
+  const d = new Date(); d.setDate(d.getDate() - 1);
+  return d.toISOString().slice(0, 10);
+}
+
+el('start-daily-btn') && el('start-daily-btn').addEventListener('click', startDailyChallenge);
+
+/* ──────────────────── AI TABS ──────────────────── */
+document.querySelectorAll('.ai-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.ai-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.ai-tab-panel').forEach(p => p.classList.add('hidden'));
+    tab.classList.add('active');
+    el('aitab-' + tab.dataset.aitab).classList.remove('hidden');
+  });
+});
+
+/* ──────────────────── AI MCQ GENERATOR ──────────────────── */
+async function generateMCQs() {
+  const topicInput = el('mcqgen-topic');
+  const output = el('mcqgen-output');
+  const topic = topicInput ? topicInput.value.trim() : '';
+  if (!topic) { alert('Please enter a topic!'); return; }
+  if (!nvApiKey) { alert('Please activate AI first with your NVIDIA API key.'); return; }
+
+  output.innerHTML = `<div class="ai-thinking"><div class="typing-dots"><span></span><span></span><span></span></div><p>Generating 10 MCQs on "${topic}"...</p></div>`;
+
+  const prompt = `You are an expert question setter for JKSSB FMPHW/MMPHW health worker exam in India. Generate exactly 10 high-quality MCQs on the topic: "${topic}".
+
+Format EACH question EXACTLY like this (no deviation):
+Q1. [Question text]
+A) [Option A]
+B) [Option B]
+C) [Option C]
+D) [Option D]
+Answer: [A/B/C/D]
+Explanation: [2-3 sentence explanation with key facts]
+
+Make questions exam-realistic, clinically accurate, and relevant to India's health context. Cover different aspects of the topic.`;
+
+  try {
+    const resp = await fetch('https://integrate.api.nvidia.com/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + nvApiKey },
+      body: JSON.stringify({
+        model: el('ai-model') ? el('ai-model').value : 'meta/llama-3.1-8b-instruct',
+        messages: [{ role: 'user', content: prompt }],
+        max_tokens: 2500, temperature: 0.7
+      })
+    });
+    if (!resp.ok) throw new Error('API error ' + resp.status);
+    const data = await resp.json();
+    const text = data.choices?.[0]?.message?.content || 'No response received.';
+    output.innerHTML = '<div class="mcqgen-result">' + parseMCQGenOutput(text, topic) + '</div>';
+  } catch (e) {
+    output.innerHTML = `<div class="ai-error">❌ Error: ${e.message}. Check your API key and try again.</div>`;
+  }
+}
+
+function parseMCQGenOutput(text, topic) {
+  const blocks = text.split(/\nQ\d+\./g).filter(b => b.trim());
+  if (blocks.length < 2) {
+    return `<div class="mcqgen-raw"><h4>Generated MCQs — ${topic}</h4><pre style="white-space:pre-wrap;font-family:inherit;color:#e2e8f0">${text}</pre></div>`;
+  }
+  return `<h4 style="margin-bottom:1rem;color:var(--cyan)">✨ 10 AI-Generated MCQs: ${topic}</h4>` +
+    blocks.map((block, i) => {
+      const lines = block.trim().split('\n').map(l => l.trim()).filter(Boolean);
+      const qText = lines[0] || '';
+      const opts = lines.filter(l => /^[A-D]\)/.test(l));
+      const ansLine = lines.find(l => /^Answer:/i.test(l)) || '';
+      const explLine = lines.find(l => /^Explanation:/i.test(l)) || '';
+      const ansLetter = (ansLine.match(/[A-D]/) || ['?'])[0];
+      const expl = explLine.replace(/^Explanation:\s*/i, '');
+      return `<div class="mcqgen-card">
+        <div class="mcqgen-qnum">Q${i+1}</div>
+        <p class="mcqgen-q">${qText}</p>
+        <div class="mcqgen-opts">${opts.map(o => {
+          const letter = o[0];
+          const isAns = letter === ansLetter;
+          return `<div class="mcqgen-opt ${isAns ? 'mcqgen-ans' : ''}">${o}${isAns ? ' ✅' : ''}</div>`;
+        }).join('')}</div>
+        ${expl ? `<div class="mcqgen-expl">💡 ${expl}</div>` : ''}
+      </div>`;
+    }).join('');
+}
+
+el('mcqgen-btn') && el('mcqgen-btn').addEventListener('click', generateMCQs);
+el('mcqgen-topic') && el('mcqgen-topic').addEventListener('keydown', e => { if (e.key === 'Enter') generateMCQs(); });
+
+/* ──────────────────── AI STUDY PLANNER ──────────────────── */
+async function generateStudyPlan() {
+  const output = el('planner-output');
+  if (!nvApiKey) { alert('Please activate AI first with your NVIDIA API key.'); return; }
+
+  const { total, correct } = getTotals();
+  const weakAreas = TOPICS.filter(t => {
+    const p = progress[t.id];
+    return p && p.attempted >= 3 && (p.correct / p.attempted) < 0.6;
+  }).map(t => {
+    const p = progress[t.id];
+    return `${t.name} (${Math.round(p.correct/p.attempted*100)}% accuracy, ${p.attempted} attempted)`;
+  });
+  const strongAreas = TOPICS.filter(t => {
+    const p = progress[t.id];
+    return p && p.attempted >= 3 && (p.correct / p.attempted) >= 0.8;
+  }).map(t => t.name);
+  const notStarted = TOPICS.filter(t => !progress[t.id] || progress[t.id].attempted < 3).map(t => t.name);
+
+  output.innerHTML = `<div class="ai-thinking"><div class="typing-dots"><span></span><span></span><span></span></div><p>Analysing your performance data and building your personalised plan...</p></div>`;
+
+  const prompt = `You are an expert study coach for JKSSB FMPHW/MMPHW health worker exam in India (J&K).
+
+Student's current performance:
+- Total questions attempted: ${total}
+- Accuracy: ${total ? Math.round(correct/total*100) : 0}%
+- Weak areas (below 60%): ${weakAreas.length ? weakAreas.join(', ') : 'None identified yet'}
+- Strong areas (above 80%): ${strongAreas.length ? strongAreas.join(', ') : 'None yet'}
+- Topics not yet started: ${notStarted.length ? notStarted.join(', ') : 'None'}
+- Current practice streak: ${bestStreak} days
+
+Create a detailed, personalised 7-day study plan to help this student crack the JKSSB FMPHW/MMPHW exam. For each day specify:
+- Morning session (45 min): what to study
+- Evening session (30 min): practice/revision
+- Daily target
+- Key topics to focus on based on their weak areas
+
+Also provide 3 specific exam tips based on their performance. Make it motivating and actionable.`;
+
+  try {
+    const resp = await fetch('https://integrate.api.nvidia.com/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + nvApiKey },
+      body: JSON.stringify({
+        model: el('ai-model') ? el('ai-model').value : 'meta/llama-3.3-70b-instruct',
+        messages: [{ role: 'user', content: prompt }],
+        max_tokens: 2000, temperature: 0.7
+      })
+    });
+    if (!resp.ok) throw new Error('API error ' + resp.status);
+    const data = await resp.json();
+    const text = data.choices?.[0]?.message?.content || '';
+    output.innerHTML = '<div class="planner-result">' + fmtAI(text) + '</div>';
+  } catch (e) {
+    output.innerHTML = `<div class="ai-error">❌ Error: ${e.message}</div>`;
+  }
+}
+
+function renderPlannerMeta() {
+  const metaEl = el('planner-meta');
+  if (!metaEl) return;
+  const { total, correct } = getTotals();
+  const weakAreas = TOPICS.filter(t => {
+    const p = progress[t.id];
+    return p && p.attempted >= 3 && (p.correct / p.attempted) < 0.6;
+  });
+  metaEl.innerHTML = `<div class="planner-stats">
+    <div class="ps-item"><span class="ps-val">${total}</span><span class="ps-lbl">Attempted</span></div>
+    <div class="ps-item"><span class="ps-val">${total ? Math.round(correct/total*100) : 0}%</span><span class="ps-lbl">Accuracy</span></div>
+    <div class="ps-item"><span class="ps-val">${weakAreas.length}</span><span class="ps-lbl">Weak Areas</span></div>
+    <div class="ps-item"><span class="ps-val">${bestStreak}</span><span class="ps-lbl">Day Streak</span></div>
+  </div>`;
+}
+
+el('planner-btn') && el('planner-btn').addEventListener('click', generateStudyPlan);
+
+/* ──────────────────── EXAM SIMULATOR ──────────────────── */
+let examState = { questions: [], idx: 0, answers: {}, timer: null, timeLeft: 5400 };
+
+function startExamSimulator() {
+  const pool = [...QUESTIONS].sort(() => Math.random() - 0.5).slice(0, 100);
+  examState = { questions: pool, idx: 0, answers: {}, timer: null, timeLeft: 5400 };
+  el('exam-lobby').classList.add('hidden');
+  el('exam-result').classList.add('hidden');
+  el('exam-arena').classList.remove('hidden');
+  renderExamQuestion();
+  startExamTimer();
+}
+
+function renderExamQuestion() {
+  const q = examState.questions[examState.idx];
+  const total = examState.questions.length;
+  if (el('exam-q-label')) el('exam-q-label').textContent = `Q ${examState.idx + 1} / ${total}`;
+  if (el('exam-num-badge')) el('exam-num-badge').textContent = `Q${examState.idx + 1}`;
+  if (el('exam-bar')) el('exam-bar').style.width = (examState.idx / total * 100) + '%';
+  if (el('exam-q-text')) el('exam-q-text').textContent = q.q;
+  const chosen = examState.answers[examState.idx];
+  if (el('exam-options')) {
+    el('exam-options').innerHTML = q.opts.map((opt, i) =>
+      `<button class="opt-btn exam-opt ${chosen === i ? 'exam-selected' : ''}" data-idx="${i}"><span class="opt-label">${String.fromCharCode(65+i)}</span>${opt}</button>`
+    ).join('');
+    el('exam-options').querySelectorAll('.exam-opt').forEach(btn => {
+      btn.addEventListener('click', () => {
+        examState.answers[examState.idx] = parseInt(btn.dataset.idx);
+        renderExamQuestion();
+      });
+    });
+  }
+  const nextBtn = el('exam-next-btn');
+  if (nextBtn) {
+    const isLast = examState.idx >= examState.questions.length - 1;
+    nextBtn.textContent = isLast ? 'Submit Exam 🏁' : 'Next Question →';
+    nextBtn.onclick = isLast ? submitExam : () => { examState.idx++; renderExamQuestion(); };
+  }
+}
+
+function startExamTimer() {
+  if (examState.timer) clearInterval(examState.timer);
+  examState.timer = setInterval(() => {
+    examState.timeLeft--;
+    updateExamTimer();
+    if (examState.timeLeft <= 0) { clearInterval(examState.timer); submitExam(); }
+    if (examState.timeLeft === 300) { /* 5 min warning */
+      const t = el('exam-timer'); if (t) t.style.color = 'var(--red)';
+    }
+  }, 1000);
+}
+
+function updateExamTimer() {
+  const m = Math.floor(examState.timeLeft / 60);
+  const s = examState.timeLeft % 60;
+  if (el('exam-timer')) el('exam-timer').textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+
+function submitExam() {
+  if (examState.timer) clearInterval(examState.timer);
+  el('exam-arena').classList.add('hidden');
+  el('exam-result').classList.remove('hidden');
+  let correct = 0, attempted = 0;
+  const reviewItems = examState.questions.map((q, i) => {
+    const chosen = examState.answers[i];
+    const answered = chosen !== undefined;
+    const isCorrect = answered && chosen === q.ans;
+    if (answered) attempted++;
+    if (isCorrect) correct++;
+    recordAnswer(q.topic, isCorrect);
+    return { q, chosen, isCorrect, answered };
+  });
+  const pct = Math.round(correct / examState.questions.length * 100);
+  let emoji = '😞', title = 'Keep Practising!';
+  if (pct >= 85) { emoji = '🏆'; title = 'Excellent! Exam Ready!'; launchConfetti(); }
+  else if (pct >= 70) { emoji = '🎉'; title = 'Very Good! Almost There!'; }
+  else if (pct >= 55) { emoji = '👍'; title = 'Good Attempt!'; }
+  else if (pct >= 40) { emoji = '📚'; title = 'Need More Practice'; }
+  if (el('exam-r-orb')) el('exam-r-orb').textContent = emoji;
+  if (el('exam-r-title')) el('exam-r-title').textContent = title;
+  if (el('exam-r-pct')) el('exam-r-pct').textContent = pct + '%';
+  const timeTaken = 5400 - examState.timeLeft;
+  const mm = Math.floor(timeTaken / 60), ss = timeTaken % 60;
+  if (el('exam-result-stats')) {
+    el('exam-result-stats').innerHTML = `
+      <div class="exam-stat-row">
+        <div class="exam-stat"><span class="es-num green">${correct}</span><span class="es-lbl">Correct</span></div>
+        <div class="exam-stat"><span class="es-num red">${attempted - correct}</span><span class="es-lbl">Wrong</span></div>
+        <div class="exam-stat"><span class="es-num orange">${100 - attempted}</span><span class="es-lbl">Unattempted</span></div>
+        <div class="exam-stat"><span class="es-num cyan">${String(mm).padStart(2,'0')}:${String(ss).padStart(2,'0')}</span><span class="es-lbl">Time Taken</span></div>
+      </div>`;
+  }
+  animateArc('exam-score-arc', pct);
+  if (el('exam-review')) {
+    el('exam-review').innerHTML = '<h3 style="margin-bottom:.8rem;font-size:.95rem">📋 Full Review</h3>' +
+      reviewItems.map((a, i) => `<div class="review-item ${a.isCorrect ? 'rc' : 'rw'}">
+        <div class="rev-q">Q${i+1}: ${a.q.q}</div>
+        <div class="rev-a">
+          ${!a.answered ? '<span style="color:var(--orange)">⚠️ Not attempted</span><br/>' : ''}
+          ${a.answered && !a.isCorrect ? `<span class="rev-wrong">Your answer: ${String.fromCharCode(65+a.chosen)}. ${a.q.opts[a.chosen]}</span><br/>` : ''}
+          <strong>✅ Correct: ${String.fromCharCode(65+a.q.ans)}. ${a.q.opts[a.q.ans]}</strong>
+        </div>
+        <div class="rev-expl">💡 ${a.q.expl}</div>
+      </div>`).join('');
+  }
+}
+
+el('start-exam-btn') && el('start-exam-btn').addEventListener('click', startExamSimulator);
+el('exam-submit-btn') && el('exam-submit-btn').addEventListener('click', () => {
+  if (confirm('Submit the exam now? This cannot be undone.')) submitExam();
+});
 
 /* ──────────────────── INIT ──────────────────── */
 renderHome();
