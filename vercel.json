@@ -9,4 +9,5 @@
   "rewrites": [
     { "source": "/api/ai", "destination": "/api/ai.js" }
   ]
+  "installCommand": "npm install"
 }
