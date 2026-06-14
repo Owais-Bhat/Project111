@@ -1,18 +1,18 @@
 /* JKSSB FMPHW/MMPHW 2025 — Complete Exam Prep */
 
 const TOPICS = [
-  { id: 'mch',        name: 'Maternal & Child Health',         icon: '🤱' },
-  { id: 'fp',         name: 'Family Planning',                  icon: '👨‍👩‍👧' },
-  { id: 'immunize',   name: 'Immunization (UIP)',               icon: '💉' },
-  { id: 'nutrition',  name: 'Nutrition',                        icon: '🥗' },
-  { id: 'diseases',   name: 'Communicable Diseases',            icon: '🦠' },
-  { id: 'ncd',        name: 'Non-Communicable Diseases',        icon: '🫀' },
-  { id: 'programs',   name: 'National Health Programs',         icon: '🏥' },
-  { id: 'firstaid',   name: 'First Aid & Emergency',            icon: '🩹' },
-  { id: 'anatomy',    name: 'Basic Anatomy & Physiology',       icon: '🧬' },
-  { id: 'environment',name: 'Environmental Health',             icon: '🌿' },
-  { id: 'stats',      name: 'Health Statistics & Epidemiology', icon: '📈' },
-  { id: 'drug',       name: 'Essential Medicines & Drug',       icon: '💊' },
+  { id: 'mch',        name: 'Maternal & Child Health',         icon: '🤱', ca:'rgba(236,72,153,.15)',  cb:'rgba(168,85,247,.15)',  glow:'rgba(236,72,153,.2)' },
+  { id: 'fp',         name: 'Family Planning',                  icon: '👨‍👩‍👧', ca:'rgba(249,115,22,.15)', cb:'rgba(234,179,8,.12)',   glow:'rgba(249,115,22,.2)' },
+  { id: 'immunize',   name: 'Immunization (UIP)',               icon: '💉', ca:'rgba(0,212,255,.15)',  cb:'rgba(139,92,246,.12)',  glow:'rgba(0,212,255,.2)' },
+  { id: 'nutrition',  name: 'Nutrition',                        icon: '🥗', ca:'rgba(16,255,168,.12)', cb:'rgba(0,212,255,.1)',    glow:'rgba(16,255,168,.2)' },
+  { id: 'diseases',   name: 'Communicable Diseases',            icon: '🦠', ca:'rgba(244,63,94,.13)',  cb:'rgba(249,115,22,.1)',   glow:'rgba(244,63,94,.2)' },
+  { id: 'ncd',        name: 'Non-Communicable Diseases',        icon: '🫀', ca:'rgba(244,63,94,.12)',  cb:'rgba(139,92,246,.12)',  glow:'rgba(244,63,94,.15)' },
+  { id: 'programs',   name: 'National Health Programs',         icon: '🏥', ca:'rgba(139,92,246,.15)', cb:'rgba(0,212,255,.1)',    glow:'rgba(139,92,246,.2)' },
+  { id: 'firstaid',   name: 'First Aid & Emergency',            icon: '🩹', ca:'rgba(239,68,68,.15)',  cb:'rgba(251,191,36,.1)',   glow:'rgba(239,68,68,.2)' },
+  { id: 'anatomy',    name: 'Basic Anatomy & Physiology',       icon: '🧬', ca:'rgba(6,182,212,.15)',  cb:'rgba(99,102,241,.12)',  glow:'rgba(6,182,212,.2)' },
+  { id: 'environment',name: 'Environmental Health',             icon: '🌿', ca:'rgba(16,185,129,.14)', cb:'rgba(0,212,255,.1)',    glow:'rgba(16,185,129,.2)' },
+  { id: 'stats',      name: 'Health Statistics & Epidemiology', icon: '📈', ca:'rgba(251,191,36,.13)', cb:'rgba(249,115,22,.1)',   glow:'rgba(251,191,36,.2)' },
+  { id: 'drug',       name: 'Essential Medicines & Drug',       icon: '💊', ca:'rgba(167,139,250,.15)',cb:'rgba(236,72,153,.1)',   glow:'rgba(167,139,250,.2)' },
 ];
 
 const QUESTIONS = [
@@ -1476,14 +1476,18 @@ function openPage(id) {
   document.getElementById('page-' + id).classList.add('active');
   const navBtn = document.querySelector(`.nav-btn[data-page="${id}"]`);
   if (navBtn) navBtn.classList.add('active');
-  if (id === 'home')     renderHome();
-  if (id === 'quiz')     resetQuizUI();
-  if (id === 'mock')     renderMockSelector();
-  if (id === 'notes')    renderNotesSidebar();
-  if (id === 'ai')       { initAI(); renderPlannerMeta(); }
-  if (id === 'progress') renderProgress();
+  if (id === 'home')      renderHome();
+  if (id === 'quiz')      resetQuizUI();
+  if (id === 'mock')      renderMockSelector();
+  if (id === 'notes')     renderNotesSidebar();
+  if (id === 'ai')        { initAI(); renderPlannerMeta(); }
+  if (id === 'progress')  renderProgress();
   if (id === 'bookmarks') renderBookmarks();
-  if (id === 'daily')    renderDailyHome();
+  if (id === 'daily')     renderDailyHome();
+  /* sync mobile bottom nav */
+  document.querySelectorAll('.mobile-nav-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.page === id);
+  });
 }
 document.querySelectorAll('.nav-btn[data-page]').forEach(btn => {
   btn.addEventListener('click', () => openPage(btn.dataset.page));
@@ -1497,7 +1501,7 @@ function renderHome() {
     const qCount = QUESTIONS.filter(q => q.topic === t.id).length;
     const acc = p.attempted ? Math.round(p.correct / p.attempted * 100) : null;
     const pct = p.attempted ? Math.round(p.correct / p.attempted * 100) : 0;
-    return `<div class="topic-card-3d" onclick="startTopicQuiz('${t.id}')" style="--card-accent:${t.color||'#00d4ff'}">
+    return `<div class="topic-card-3d" onclick="startTopicQuiz('${t.id}')" style="--tc-a:${t.ca||'rgba(0,212,255,.12)'};--tc-b:${t.cb||'rgba(139,92,246,.1)'};--tc-glow:${t.glow||'rgba(0,212,255,.15)'}">
       <div class="tc-icon">${t.icon}</div>
       <div class="tc-name">${t.name}</div>
       <div class="tc-meta">${qCount} Questions</div>
@@ -2566,6 +2570,11 @@ function submitExam() {
 el('start-exam-btn') && el('start-exam-btn').addEventListener('click', startExamSimulator);
 el('exam-submit-btn') && el('exam-submit-btn').addEventListener('click', () => {
   if (confirm('Submit the exam now? This cannot be undone.')) submitExam();
+});
+
+/* ──────────────────── MOBILE BOTTOM NAV INIT ──────────────────── */
+document.querySelectorAll('.mobile-nav-btn[data-page]').forEach(btn => {
+  btn.addEventListener('click', () => openPage(btn.dataset.page));
 });
 
 /* ──────────────────── INIT ──────────────────── */
