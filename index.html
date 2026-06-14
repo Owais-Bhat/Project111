@@ -29,7 +29,10 @@
     <nav class="top-nav">
       <button class="nav-btn active" data-page="home"><span>🏠</span>Home</button>
       <button class="nav-btn" data-page="quiz"><span>⚡</span>Practice</button>
+      <button class="nav-btn" data-page="daily"><span>📅</span>Daily</button>
       <button class="nav-btn" data-page="mock"><span>📋</span>Mock Test</button>
+      <button class="nav-btn" data-page="exam"><span>🎯</span>Simulator</button>
+      <button class="nav-btn" data-page="bookmarks"><span>🔖</span>Bookmarks</button>
       <button class="nav-btn" data-page="notes"><span>📚</span>Notes</button>
       <button class="nav-btn" data-page="ai"><span>🤖</span>AI Tutor</button>
       <button class="nav-btn" data-page="progress"><span>📊</span>Progress</button>
@@ -49,7 +52,7 @@
       <span class="glow-text">Crack FMPHW / MMPHW</span><br/>
       <span class="gradient-text">With Confidence</span>
     </h1>
-    <p class="hero-sub">400+ Exam MCQs · Previous Year Papers · AI Tutor · 3D Mock Tests · Full Syllabus</p>
+    <p class="hero-sub">1000+ Exam MCQs · AI MCQ Generator · Daily Challenge · Exam Simulator · Study Planner</p>
     <div class="hero-buttons">
       <button class="btn-primary" onclick="openPage('quiz')">
         <span class="btn-icon">⚡</span> Start Practice Now
@@ -60,7 +63,7 @@
       </button>
     </div>
     <div class="hero-stats">
-      <div class="hstat"><span class="hstat-num" id="hs-q">400+</span><span class="hstat-label">Questions</span></div>
+      <div class="hstat"><span class="hstat-num" id="hs-q">1001</span><span class="hstat-label">Questions</span></div>
       <div class="hstat-div"></div>
       <div class="hstat"><span class="hstat-num" id="hs-t">12</span><span class="hstat-label">Topics</span></div>
       <div class="hstat-div"></div>
@@ -166,7 +169,10 @@
     <div class="flip-card" id="flip-card">
       <div class="flip-card-inner" id="flip-inner">
         <div class="flip-front">
-          <div class="q-number-badge" id="q-num-badge">Q1</div>
+          <div class="q-front-top">
+            <div class="q-number-badge" id="q-num-badge">Q1</div>
+            <button class="bookmark-btn" id="bookmark-btn" onclick="toggleBookmark()" title="Bookmark this question">🔖</button>
+          </div>
           <p class="q-text" id="q-text"></p>
           <div class="options-grid" id="q-options"></div>
         </div>
@@ -306,53 +312,237 @@
 
 <!-- ═══════════ AI TUTOR ═══════════ -->
 <main id="page-ai" class="page">
-  <div id="ai-key-gate" class="ai-gate">
-    <div class="ai-gate-inner">
-      <div style="font-size:4rem;margin-bottom:1rem">🤖</div>
-      <h2>AI Tutor — Powered by NVIDIA NIM</h2>
-      <p>Ask any FMPHW/MMPHW doubt in plain language. Get clear, exam-focused answers instantly.</p>
-      <div class="ai-key-row">
-        <input type="password" id="ai-key-input" placeholder="nvapi-xxxxxxxxxxxxxxxx" class="ai-key-input"/>
-        <button class="btn-primary" id="ai-key-btn">Activate AI →</button>
-      </div>
-      <p class="ai-hint">🔑 Get your FREE NVIDIA API key at <strong>build.nvidia.com</strong> → "Get API Key". Stored only in your browser.</p>
-    </div>
+  <div id="ai-key-gate" class="ai-gate hidden">
+    <!-- Key gate hidden — API key is server-side via Vercel env var -->
   </div>
 
-  <div id="ai-chat" class="hidden">
-    <div class="ai-toolbar">
-      <select id="ai-model" class="ai-model-sel">
-        <option value="meta/llama-3.3-70b-instruct">🦙 Llama 3.3 70B (Best)</option>
-        <option value="meta/llama-3.1-8b-instruct">⚡ Llama 3.1 8B (Fast)</option>
-        <option value="nvidia/llama-3.1-nemotron-70b-instruct">🔷 Nemotron 70B</option>
-        <option value="mistralai/mixtral-8x7b-instruct-v0.1">🌀 Mixtral 8x7B</option>
-      </select>
-      <button class="btn-mini" id="ai-reset-key">Change Key</button>
+  <div id="ai-chat">
+    <!-- AI Tab Bar -->
+    <div class="ai-tabs">
+      <button class="ai-tab active" data-aitab="chat">💬 AI Chat</button>
+      <button class="ai-tab" data-aitab="mcqgen">✨ MCQ Generator</button>
+      <button class="ai-tab" data-aitab="planner">📅 Study Planner</button>
     </div>
-    <div class="quick-qs-strip">
-      <button class="qchip" data-q="Explain the complete UIP immunisation schedule of India — all vaccines, ages, routes and doses">💉 Immunisation Schedule</button>
-      <button class="qchip" data-q="What is ASHA's role under NHM? List her duties and all incentive payments">👩 ASHA Roles & Incentives</button>
-      <button class="qchip" data-q="Compare ANC visits — what tests, medicines and counselling at each of the 4 ANC visits under RMNCH+A">🤱 ANC Visits Guide</button>
-      <button class="qchip" data-q="Compare Kwashiorkor and Marasmus in detail — differences in cause, features, treatment, MUAC">🥗 Kwashiorkor vs Marasmus</button>
-      <button class="qchip" data-q="Explain cold chain in immunisation: equipment, temperatures, VVM, freeze-sensitive vaccines">🧊 Cold Chain</button>
-      <button class="qchip" data-q="All family planning methods with Pearl Index, who provides them, side effects">👨‍👩‍👧 Family Planning</button>
-      <button class="qchip" data-q="Step-by-step CPR for adult and child — compressions, breaths, depth, rate">🩺 CPR Steps</button>
-      <button class="qchip" data-q="JSSK, JSY and PMMVY — who is eligible, what benefits, how much money">🏥 JSSK / JSY / PMMVY</button>
-      <button class="qchip" data-q="TB treatment in India — NTEP, DOTS regimen, MDR-TB, Nikshay. Explain in detail">🦠 TB / NTEP</button>
-      <button class="qchip" data-q="Give me 15 most important MCQs on national health programs for JKSSB FMPHW exam with answers">📝 MCQs on Health Programs</button>
+
+    <!-- TAB: Chat -->
+    <div id="aitab-chat" class="ai-tab-panel">
+      <div class="ai-toolbar">
+        <div class="ai-model-badge">🔷 nvidia/nemotron-3-ultra-550b-a55b</div>
+      </div>
+      <div class="quick-qs-strip">
+        <button class="qchip" data-q="Explain the complete UIP immunisation schedule of India — all vaccines, ages, routes and doses">💉 Immunisation Schedule</button>
+        <button class="qchip" data-q="What is ASHA's role under NHM? List her duties and all incentive payments">👩 ASHA Roles</button>
+        <button class="qchip" data-q="Compare ANC visits — what tests, medicines and counselling at each of the 4 ANC visits under RMNCH+A">🤱 ANC Visits</button>
+        <button class="qchip" data-q="Compare Kwashiorkor and Marasmus in detail — differences in cause, features, treatment, MUAC">🥗 Kwashiorkor vs Marasmus</button>
+        <button class="qchip" data-q="Explain cold chain in immunisation: equipment, temperatures, VVM, freeze-sensitive vaccines">🧊 Cold Chain</button>
+        <button class="qchip" data-q="All family planning methods with Pearl Index, who provides them, side effects">👨‍👩‍👧 Family Planning</button>
+        <button class="qchip" data-q="Step-by-step CPR for adult and child — compressions, breaths, depth, rate">🩺 CPR Steps</button>
+        <button class="qchip" data-q="JSSK, JSY and PMMVY — who is eligible, what benefits, how much money">🏥 JSSK / JSY</button>
+        <button class="qchip" data-q="TB treatment in India — NTEP, DOTS regimen, MDR-TB, Nikshay. Explain in detail">🦠 TB / NTEP</button>
+        <button class="qchip" data-q="Give me 15 most important MCQs on national health programs for JKSSB FMPHW exam with answers">📝 Health Programs MCQs</button>
+      </div>
+      <div class="chat-window" id="chat-window">
+        <div class="chat-msg bot">
+          <div class="chat-avatar">🤖</div>
+          <div class="chat-bubble">
+            Namaste! 🙏 I am your personal AI tutor for <strong>JKSSB FMPHW / MMPHW 2025</strong>, powered by <strong>NVIDIA Nemotron Ultra 550B</strong> — one of the most powerful AI models available.<br/><br/>
+            Ask me anything about the exam syllabus — immunization, ANC, diseases, national programs, anatomy, first aid. I will give you clear, <strong>exam-focused</strong> answers with tables and key points. 💪
+          </div>
+        </div>
+      </div>
+      <div class="chat-input-row">
+        <textarea id="chat-input" class="chat-input" placeholder="Type your question here... (Enter to send, Shift+Enter for new line)" rows="2"></textarea>
+        <button class="btn-primary send-btn" id="send-btn">➤</button>
+      </div>
     </div>
-    <div class="chat-window" id="chat-window">
-      <div class="chat-msg bot">
-        <div class="chat-avatar">🤖</div>
-        <div class="chat-bubble">
-          Namaste! 🙏 I am your personal AI tutor for <strong>JKSSB FMPHW / MMPHW 2025</strong>.<br/><br/>
-          Ask me anything about the exam syllabus — immunization, ANC, diseases, national programs, anatomy, first aid. I will give you clear, <strong>exam-focused</strong> answers with tables and key points. You can also ask me to give you MCQs on any topic! 💪
+
+    <!-- TAB: MCQ Generator -->
+    <div id="aitab-mcqgen" class="ai-tab-panel hidden">
+      <div class="mcqgen-panel">
+        <div class="mcqgen-header">
+          <div style="font-size:2.5rem">✨</div>
+          <h3>AI MCQ Generator</h3>
+          <p>Type any topic — AI instantly generates 10 fresh exam-style MCQs you've never seen before.</p>
+        </div>
+        <div class="mcqgen-input-row">
+          <input type="text" id="mcqgen-topic" class="mcqgen-input" placeholder="e.g. Cold Chain, Eclampsia, DOTS therapy, Vitamin A deficiency..."/>
+          <button class="btn-primary" id="mcqgen-btn">⚡ Generate 10 MCQs</button>
+        </div>
+        <div id="mcqgen-output"></div>
+      </div>
+    </div>
+
+    <!-- TAB: Study Planner -->
+    <div id="aitab-planner" class="ai-tab-panel hidden">
+      <div class="planner-panel">
+        <div class="planner-header">
+          <div style="font-size:2.5rem">📅</div>
+          <h3>AI Study Planner</h3>
+          <p>AI analyses your weak areas from your progress data and builds a personalised daily study schedule.</p>
+        </div>
+        <div class="planner-meta" id="planner-meta"></div>
+        <button class="btn-primary big" id="planner-btn">🧠 Generate My Study Plan</button>
+        <div id="planner-output" class="planner-output"></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ═══════════ BOOKMARKS ═══════════ -->
+<main id="page-bookmarks" class="page">
+  <div class="section-header">
+    <h2>🔖 Bookmarked Questions</h2>
+    <p>Questions you starred during practice — review them anytime</p>
+  </div>
+  <div id="bookmarks-empty" class="empty-state hidden">
+    <div style="font-size:3rem">🔖</div>
+    <p>No bookmarks yet. Click the 🔖 button while practising to save questions here.</p>
+  </div>
+  <div id="bookmarks-list"></div>
+  <button class="btn-danger" id="clear-bookmarks-btn" style="margin-top:2rem">🗑️ Clear All Bookmarks</button>
+</main>
+
+<!-- ═══════════ DAILY CHALLENGE ═══════════ -->
+<main id="page-daily" class="page">
+  <div class="section-header">
+    <h2>📅 Daily 10-Question Challenge</h2>
+    <p>A fresh set of 10 questions every day. Complete it to keep your streak alive! 🔥</p>
+  </div>
+  <div id="daily-home">
+    <div class="daily-streak-card">
+      <div class="dsc-inner">
+        <div class="dsc-fire">🔥</div>
+        <div class="dsc-num" id="daily-streak-num">0</div>
+        <div class="dsc-label">Day Streak</div>
+      </div>
+      <div class="dsc-divider"></div>
+      <div class="dsc-inner">
+        <div class="dsc-fire">📅</div>
+        <div class="dsc-num" id="daily-done-today">—</div>
+        <div class="dsc-label">Today's Status</div>
+      </div>
+      <div class="dsc-divider"></div>
+      <div class="dsc-inner">
+        <div class="dsc-fire">🏆</div>
+        <div class="dsc-num" id="daily-best-streak">0</div>
+        <div class="dsc-label">Best Streak</div>
+      </div>
+    </div>
+    <button class="btn-primary big" id="start-daily-btn">
+      <span>📅</span> Start Today's Challenge
+      <div class="btn-shine"></div>
+    </button>
+  </div>
+  <div id="daily-arena" class="hidden">
+    <div class="quiz-hud">
+      <div class="hud-item"><span class="hud-label">Question</span><span class="hud-val" id="dc-counter">1/10</span></div>
+      <div class="hud-item"><span class="hud-label">Score</span><span class="hud-val green" id="dc-score">0</span></div>
+      <div class="hud-item"><span class="hud-label">Streak</span><span class="hud-val gold" id="dc-streak">🔥0</span></div>
+    </div>
+    <div class="quiz-progress-track"><div class="quiz-progress-fill" id="dc-bar"></div></div>
+    <div class="flip-card" id="dc-flip-card">
+      <div class="flip-card-inner" id="dc-flip-inner">
+        <div class="flip-front">
+          <div class="q-number-badge" id="dc-num-badge">Q1</div>
+          <p class="q-text" id="dc-q-text"></p>
+          <div class="options-grid" id="dc-options"></div>
+        </div>
+        <div class="flip-back" id="dc-flip-back">
+          <div class="expl-header">📘 Explanation</div>
+          <p class="expl-body" id="dc-expl"></p>
+          <button class="btn-primary" id="dc-next-btn">Next Question →</button>
         </div>
       </div>
     </div>
-    <div class="chat-input-row">
-      <textarea id="chat-input" class="chat-input" placeholder="Type your question here... (Enter to send, Shift+Enter for new line)" rows="2"></textarea>
-      <button class="btn-primary send-btn" id="send-btn">➤</button>
+  </div>
+  <div id="daily-result" class="hidden">
+    <div class="result-panel">
+      <div class="result-orb" id="dc-r-orb">🎉</div>
+      <h2 id="dc-r-title">Daily Challenge Complete!</h2>
+      <div class="result-score-ring">
+        <svg viewBox="0 0 120 120" width="150" height="150">
+          <circle cx="60" cy="60" r="54" fill="none" stroke="#1e293b" stroke-width="10"/>
+          <circle cx="60" cy="60" r="54" fill="none" stroke="url(#dcScoreGrad)" stroke-width="10"
+            stroke-linecap="round" stroke-dasharray="339.3" stroke-dashoffset="339.3"
+            id="dc-score-arc" transform="rotate(-90 60 60)"/>
+          <defs><linearGradient id="dcScoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#ffd700"/><stop offset="100%" stop-color="#ff6b35"/>
+          </linearGradient></defs>
+        </svg>
+        <div class="ring-text"><span id="dc-r-pct">0%</span><small>Score</small></div>
+      </div>
+      <p id="dc-r-detail" style="color:#94a3b8;margin:.5rem 0 1.5rem"></p>
+      <p class="daily-streak-badge" id="dc-streak-badge"></p>
+      <button class="btn-secondary" onclick="openPage('daily')">Back to Daily Hub</button>
+    </div>
+  </div>
+</main>
+
+<!-- ═══════════ EXAM SIMULATOR ═══════════ -->
+<main id="page-exam" class="page">
+  <div id="exam-lobby">
+    <div class="section-header">
+      <h2>🎯 JKSSB Exam Simulator</h2>
+      <p>Strict exam mode — 90 minutes · 100 questions · No going back · Auto-submit</p>
+    </div>
+    <div class="exam-rules-card">
+      <h3>📋 Exam Rules</h3>
+      <ul class="exam-rules-list">
+        <li>⏱️ 90 minutes total — timer counts down</li>
+        <li>🔒 Once you move to next question, you cannot go back</li>
+        <li>📝 100 MCQs from all topics (random mix)</li>
+        <li>🚫 No explanations shown during the exam</li>
+        <li>✅ Results and full review shown at the end</li>
+        <li>⚠️ Unanswered questions count as wrong</li>
+      </ul>
+    </div>
+    <button class="btn-primary big" id="start-exam-btn">
+      <span>🎯</span> Start Exam Simulation
+      <div class="btn-shine"></div>
+    </button>
+  </div>
+
+  <div id="exam-arena" class="hidden">
+    <div class="exam-hud">
+      <div class="exam-timer-wrap">
+        <span class="exam-timer-icon">⏱️</span>
+        <span id="exam-timer" class="exam-timer">90:00</span>
+      </div>
+      <div class="exam-hud-mid">
+        <strong id="exam-q-label">Q 1 / 100</strong>
+        <div class="exam-progress-track"><div class="exam-progress-fill" id="exam-bar"></div></div>
+      </div>
+      <button class="btn-danger btn-mini" id="exam-submit-btn">Submit Exam</button>
+    </div>
+    <div class="exam-question-card">
+      <div class="q-number-badge" id="exam-num-badge">Q1</div>
+      <p class="q-text" id="exam-q-text" style="font-size:1.1rem;margin:1rem 0 1.5rem"></p>
+      <div class="options-grid" id="exam-options"></div>
+      <div class="exam-nav">
+        <button class="btn-secondary" id="exam-next-btn">Next Question →</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="exam-result" class="hidden">
+    <div class="result-panel" style="max-width:700px;margin:0 auto">
+      <div class="result-orb" id="exam-r-orb">🎯</div>
+      <h2 id="exam-r-title">Exam Complete!</h2>
+      <div class="result-score-ring">
+        <svg viewBox="0 0 120 120" width="150" height="150">
+          <circle cx="60" cy="60" r="54" fill="none" stroke="#1e293b" stroke-width="10"/>
+          <circle cx="60" cy="60" r="54" fill="none" stroke="url(#examScoreGrad)" stroke-width="10"
+            stroke-linecap="round" stroke-dasharray="339.3" stroke-dashoffset="339.3"
+            id="exam-score-arc" transform="rotate(-90 60 60)"/>
+          <defs><linearGradient id="examScoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#00ff88"/><stop offset="100%" stop-color="#00d4ff"/>
+          </linearGradient></defs>
+        </svg>
+        <div class="ring-text"><span id="exam-r-pct">0%</span><small>Score</small></div>
+      </div>
+      <div class="exam-result-stats" id="exam-result-stats"></div>
+      <button class="btn-secondary" onclick="document.getElementById('exam-lobby').classList.remove('hidden');document.getElementById('exam-result').classList.add('hidden')">Take Another Exam</button>
+      <div id="exam-review" class="review-section" style="margin-top:2rem"></div>
     </div>
   </div>
 </main>
@@ -387,6 +577,19 @@
 
   <button class="btn-danger" style="margin-top:2rem" onclick="resetProgress()">🗑️ Reset All Progress</button>
 </main>
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="mobile-bottom-nav" id="mobile-bottom-nav">
+  <button class="mobile-nav-btn active" data-page="home"><span class="mbn-icon">🏠</span>Home</button>
+  <button class="mobile-nav-btn" data-page="quiz"><span class="mbn-icon">⚡</span>Practice</button>
+  <button class="mobile-nav-btn" data-page="daily"><span class="mbn-icon">📅</span>Daily</button>
+  <button class="mobile-nav-btn" data-page="mock"><span class="mbn-icon">📋</span>Mock</button>
+  <button class="mobile-nav-btn" data-page="exam"><span class="mbn-icon">🎯</span>Simulator</button>
+  <button class="mobile-nav-btn" data-page="bookmarks"><span class="mbn-icon">🔖</span>Saved</button>
+  <button class="mobile-nav-btn" data-page="notes"><span class="mbn-icon">📚</span>Notes</button>
+  <button class="mobile-nav-btn" data-page="ai"><span class="mbn-icon">🤖</span>AI Tutor</button>
+  <button class="mobile-nav-btn" data-page="progress"><span class="mbn-icon">📊</span>Progress</button>
+</nav>
 
 <script src="./exam.js"></script>
 </body>
