@@ -312,20 +312,11 @@
 
 <!-- ═══════════ AI TUTOR ═══════════ -->
 <main id="page-ai" class="page">
-  <div id="ai-key-gate" class="ai-gate">
-    <div class="ai-gate-inner">
-      <div style="font-size:4rem;margin-bottom:1rem">🤖</div>
-      <h2>AI Tutor — Powered by NVIDIA NIM</h2>
-      <p>Chat with AI, generate fresh MCQs, or get a personalised study plan.</p>
-      <div class="ai-key-row">
-        <input type="password" id="ai-key-input" placeholder="nvapi-xxxxxxxxxxxxxxxx" class="ai-key-input"/>
-        <button class="btn-primary" id="ai-key-btn">Activate AI →</button>
-      </div>
-      <p class="ai-hint">🔑 Get your FREE NVIDIA API key at <strong>build.nvidia.com</strong> → "Get API Key". Stored only in your browser.</p>
-    </div>
+  <div id="ai-key-gate" class="ai-gate hidden">
+    <!-- Key gate hidden — API key is server-side via Vercel env var -->
   </div>
 
-  <div id="ai-chat" class="hidden">
+  <div id="ai-chat">
     <!-- AI Tab Bar -->
     <div class="ai-tabs">
       <button class="ai-tab active" data-aitab="chat">💬 AI Chat</button>
@@ -336,13 +327,7 @@
     <!-- TAB: Chat -->
     <div id="aitab-chat" class="ai-tab-panel">
       <div class="ai-toolbar">
-        <select id="ai-model" class="ai-model-sel">
-          <option value="meta/llama-3.3-70b-instruct">🦙 Llama 3.3 70B (Best)</option>
-          <option value="meta/llama-3.1-8b-instruct">⚡ Llama 3.1 8B (Fast)</option>
-          <option value="nvidia/llama-3.1-nemotron-70b-instruct">🔷 Nemotron 70B</option>
-          <option value="mistralai/mixtral-8x7b-instruct-v0.1">🌀 Mixtral 8x7B</option>
-        </select>
-        <button class="btn-mini" id="ai-reset-key">Change Key</button>
+        <div class="ai-model-badge">🔷 nvidia/nemotron-3-ultra-550b-a55b</div>
       </div>
       <div class="quick-qs-strip">
         <button class="qchip" data-q="Explain the complete UIP immunisation schedule of India — all vaccines, ages, routes and doses">💉 Immunisation Schedule</button>
@@ -360,7 +345,7 @@
         <div class="chat-msg bot">
           <div class="chat-avatar">🤖</div>
           <div class="chat-bubble">
-            Namaste! 🙏 I am your personal AI tutor for <strong>JKSSB FMPHW / MMPHW 2025</strong>.<br/><br/>
+            Namaste! 🙏 I am your personal AI tutor for <strong>JKSSB FMPHW / MMPHW 2025</strong>, powered by <strong>NVIDIA Nemotron Ultra 550B</strong> — one of the most powerful AI models available.<br/><br/>
             Ask me anything about the exam syllabus — immunization, ANC, diseases, national programs, anatomy, first aid. I will give you clear, <strong>exam-focused</strong> answers with tables and key points. 💪
           </div>
         </div>

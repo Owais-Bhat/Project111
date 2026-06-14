@@ -758,6 +758,14 @@ body::before{
   transition:.15s;
 }
 .ai-model-sel:focus{outline:2px solid rgba(0,212,255,.4)}
+.ai-model-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:linear-gradient(135deg,rgba(0,212,255,.1),rgba(139,92,246,.12));
+  border:1px solid rgba(0,212,255,.25);
+  color:var(--cyan3);padding:.4rem 1rem;border-radius:99px;
+  font-size:.8rem;font-weight:700;letter-spacing:.03em;
+  box-shadow:0 0 16px rgba(0,212,255,.12);
+}
 .quick-qs-strip{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.85rem}
 .qchip{
   background:rgba(139,92,246,.1);

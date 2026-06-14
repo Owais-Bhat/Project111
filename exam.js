@@ -1436,7 +1436,7 @@ let progress = JSON.parse(localStorage.getItem('jkssb_progress') || '{}');
 let streak = parseInt(localStorage.getItem('jkssb_streak') || '0');
 let bestStreak = parseInt(localStorage.getItem('jkssb_bestStreak') || '0');
 let mockHistory = JSON.parse(localStorage.getItem('jkssb_mockHistory') || '[]');
-let nvApiKey = localStorage.getItem('jkssb_nvkey') || '';
+/* AI key is stored server-side in Vercel env var NVIDIA_API_KEY — not needed client-side */
 
 let currentQuiz = { questions: [], idx: 0, score: 0, mode: 'learn', userAnswers: [] };
 let lastQuizParams = null;
@@ -1928,25 +1928,25 @@ function resetProgress() {
 }
 
 /* ──────────────────── AI TUTOR ──────────────────── */
-function initAI() {
-  if (nvApiKey) { hide('ai-key-gate'); show('ai-chat'); }
-  else          { show('ai-key-gate'); hide('ai-chat'); }
+const AI_MODEL = 'nvidia/nemotron-3-ultra-550b-a55b';
+const AI_SYSTEM = 'You are an expert AI tutor for the JKSSB FMPHW/MMPHW 2025 health worker exam in Jammu & Kashmir, India. Give clear, structured answers with bullet points, tables, and mark exam-important facts with ⭐. Cover: MCH, ANC, UIP immunization schedule, cold chain, family planning methods, nutrition deficiencies, national health programs (NHM, NTEP, NACP, NPCDCS, RMNCH+A, JSSK, JSY, PMMVY, ICDS), first aid, CPR, anatomy, vital signs, environmental health, biomedical waste management, health statistics, essential medicines. Be concise and exam-focused.';
+
+async function callAI(messages, maxTokens = 1200) {
+  const res = await fetch('/api/ai', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ messages, max_tokens: maxTokens, temperature: 0.4 })
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'API error ' + res.status);
+  return data.choices?.[0]?.message?.content || 'No response received.';
 }
 
-el('ai-key-btn').addEventListener('click', () => {
-  const key = el('ai-key-input').value.trim();
-  if (!key || !key.startsWith('nvapi-')) { alert('Enter a valid NVIDIA API key starting with nvapi-'); return; }
-  nvApiKey = key;
-  localStorage.setItem('jkssb_nvkey', key);
-  initAI();
-  addBotMsg('🏥 AI Tutor activated! I\'m ready to help you crack JKSSB FMPHW/MMPHW 2025. Ask me anything about the syllabus!');
-});
-
-el('ai-reset-key').addEventListener('click', () => {
-  nvApiKey = ''; localStorage.removeItem('jkssb_nvkey');
-  if (el('ai-key-input')) el('ai-key-input').value = '';
-  initAI();
-});
+function initAI() {
+  /* No key gate — always show chat */
+  hide('ai-key-gate');
+  show('ai-chat');
+}
 
 document.querySelectorAll('.qchip').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -1964,36 +1964,19 @@ async function sendAI() {
   const inp  = el('chat-input');
   const text = inp.value.trim();
   if (!text) return;
-  if (!nvApiKey) { alert('Please enter your NVIDIA API key first.'); return; }
   inp.value = '';
   addUserMsg(text);
   const tid = addTypingIndicator();
   try {
-    const model = el('ai-model') ? el('ai-model').value : 'meta/llama-3.3-70b-instruct';
-    const res = await fetch('https://integrate.api.nvidia.com/v1/chat/completions', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + nvApiKey },
-      body: JSON.stringify({
-        model,
-        messages: [
-          { role: 'system', content: 'You are an expert tutor for the JKSSB FMPHW/MMPHW 2025 health worker exam in Jammu & Kashmir. Answer clearly with bullet points, tables, and ⭐ for exam-important points. Topics: MCH, ANC, immunization UIP schedule, cold chain, family planning, nutrition deficiencies, national health programs (NHM, NTEP, NACP, NPCDCS, RMNCH+A), first aid, CPR, anatomy, vital signs, environmental health, biomedical waste, health statistics, essential medicines. Be concise and practical.' },
-          { role: 'user', content: text }
-        ],
-        max_tokens: 1024, temperature: 0.4, stream: false
-      })
-    });
+    const reply = await callAI([
+      { role: 'system', content: AI_SYSTEM },
+      { role: 'user',   content: text }
+    ], 1200);
     removeTypingIndicator(tid);
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      addBotMsg('❌ API Error: ' + (err.message || res.status) + '. Check your API key.');
-      return;
-    }
-    const data  = await res.json();
-    const reply = data.choices?.[0]?.message?.content || 'No response received.';
     addBotMsg(reply);
   } catch (e) {
     removeTypingIndicator(tid);
-    addBotMsg('❌ Network error: ' + e.message);
+    addBotMsg('❌ Error: ' + e.message + '. Make sure NVIDIA_API_KEY is set in Vercel environment variables.');
   }
 }
 
@@ -2336,21 +2319,10 @@ Explanation: [2-3 sentence explanation with key facts]
 Make questions exam-realistic, clinically accurate, and relevant to India's health context. Cover different aspects of the topic.`;
 
   try {
-    const resp = await fetch('https://integrate.api.nvidia.com/v1/chat/completions', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + nvApiKey },
-      body: JSON.stringify({
-        model: el('ai-model') ? el('ai-model').value : 'meta/llama-3.1-8b-instruct',
-        messages: [{ role: 'user', content: prompt }],
-        max_tokens: 2500, temperature: 0.7
-      })
-    });
-    if (!resp.ok) throw new Error('API error ' + resp.status);
-    const data = await resp.json();
-    const text = data.choices?.[0]?.message?.content || 'No response received.';
+    const text = await callAI([{ role: 'user', content: prompt }], 2500);
     output.innerHTML = '<div class="mcqgen-result">' + parseMCQGenOutput(text, topic) + '</div>';
   } catch (e) {
-    output.innerHTML = `<div class="ai-error">❌ Error: ${e.message}. Check your API key and try again.</div>`;
+    output.innerHTML = `<div class="ai-error">❌ Error: ${e.message}</div>`;
   }
 }
 
@@ -2424,18 +2396,7 @@ Create a detailed, personalised 7-day study plan to help this student crack the 
 Also provide 3 specific exam tips based on their performance. Make it motivating and actionable.`;
 
   try {
-    const resp = await fetch('https://integrate.api.nvidia.com/v1/chat/completions', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + nvApiKey },
-      body: JSON.stringify({
-        model: el('ai-model') ? el('ai-model').value : 'meta/llama-3.3-70b-instruct',
-        messages: [{ role: 'user', content: prompt }],
-        max_tokens: 2000, temperature: 0.7
-      })
-    });
-    if (!resp.ok) throw new Error('API error ' + resp.status);
-    const data = await resp.json();
-    const text = data.choices?.[0]?.message?.content || '';
+    const text = await callAI([{ role: 'user', content: prompt }], 2000);
     output.innerHTML = '<div class="planner-result">' + fmtAI(text) + '</div>';
   } catch (e) {
     output.innerHTML = `<div class="ai-error">❌ Error: ${e.message}</div>`;
