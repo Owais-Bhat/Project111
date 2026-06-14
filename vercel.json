@@ -1,13 +1,10 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "build",
+  "installCommand": "npm install",
   "functions": {
     "api/ai.js": {
       "maxDuration": 60
     }
-  },
-  "rewrites": [
-    { "source": "/api/ai", "destination": "/api/ai.js" }
-  ]
-  "installCommand": "npm install"
+  }
 }

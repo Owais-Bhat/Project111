@@ -1,33 +1,24 @@
 /* Vercel Serverless Function — NVIDIA NIM Proxy
-   Env var required: NVIDIA_API_KEY  (set in Vercel dashboard)
-   Keeps the API key server-side, never exposed to the browser.
+   Env var required in Vercel Dashboard: NVIDIA_API_KEY
+   API key stays server-side — never exposed to the browser.
 */
-export default async function handler(req, res) {
-  /* CORS headers — allow requests from same origin */
+module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
-  }
-
-  if (req.method !== 'POST') {
-    res.status(405).json({ error: 'Method not allowed' });
-    return;
-  }
+  if (req.method === 'OPTIONS') { res.status(200).end(); return; }
+  if (req.method !== 'POST') { res.status(405).json({ error: 'Method not allowed' }); return; }
 
   const apiKey = process.env.NVIDIA_API_KEY;
   if (!apiKey) {
-    res.status(500).json({ error: 'NVIDIA_API_KEY environment variable is not set in Vercel.' });
+    res.status(500).json({ error: 'NVIDIA_API_KEY is not set in Vercel Environment Variables. Go to Vercel Dashboard → Project → Settings → Environment Variables and add it.' });
     return;
   }
 
   const { messages, max_tokens = 2048, temperature = 0.7 } = req.body || {};
-
   if (!messages || !Array.isArray(messages)) {
-    res.status(400).json({ error: 'Invalid request body — messages array required.' });
+    res.status(400).json({ error: 'Invalid body — messages array required.' });
     return;
   }
 
@@ -36,7 +27,7 @@ export default async function handler(req, res) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
+        'Authorization': 'Bearer ' + apiKey,
       },
       body: JSON.stringify({
         model: 'nvidia/nemotron-3-ultra-550b-a55b',
@@ -47,14 +38,12 @@ export default async function handler(req, res) {
     });
 
     const data = await upstream.json();
-
     if (!upstream.ok) {
       res.status(upstream.status).json({ error: data?.detail || data?.message || 'NVIDIA API error', details: data });
       return;
     }
-
     res.status(200).json(data);
   } catch (err) {
     res.status(500).json({ error: 'Proxy error: ' + err.message });
   }
-}
+};
