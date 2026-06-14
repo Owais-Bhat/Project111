@@ -5,7 +5,7 @@
   "scripts": {
     "start": "parcel ./*.html ",
     "dev": "parcel ./*.html ",
-    "build": "parcel build ./*.html  --dist-dir ./build"
+    "build": "npx parcel build ./*.html --dist-dir ./build"
   },
   "author": "",
   "license": "ISC",
