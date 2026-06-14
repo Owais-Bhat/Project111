@@ -1,0 +1,14 @@
+# Build outputs
+dist/
+build/
+.parcel-cache/
+
+# Dependencies
+node_modules/
+
+# Vercel
+.vercel/
+
+# OS
+.DS_Store
+Thumbs.db
