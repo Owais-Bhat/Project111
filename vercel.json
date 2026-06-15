@@ -3,7 +3,8 @@
   "outputDirectory": "build",
   "installCommand": "npm install",
   "functions": {
-    "api/ai.js": { "maxDuration": 60 },
-    "api/nvidia.js": { "maxDuration": 30 }
+    "api/ai.js": {
+      "maxDuration": 60
+    }
   }
 }

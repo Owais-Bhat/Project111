@@ -2299,11 +2299,19 @@ document.querySelectorAll('.ai-tab').forEach(tab => {
 async function generateMCQs() {
   const topicInput = el('mcqgen-topic');
   const output = el('mcqgen-output');
+  const btn = el('mcqgen-btn');
   const topic = topicInput ? topicInput.value.trim() : '';
   if (!topic) { alert('Please enter a topic!'); return; }
-  if (!nvApiKey) { alert('Please activate AI first with your NVIDIA API key.'); return; }
 
-  output.innerHTML = `<div class="ai-thinking"><div class="typing-dots"><span></span><span></span><span></span></div><p>Generating 10 MCQs on "${topic}"...</p></div>`;
+  if (btn) { btn.disabled = true; btn.textContent = '⏳ Generating...'; }
+  output.innerHTML = `<div class="ai-loader">
+    <div class="ai-loader-spinner"></div>
+    <div class="ai-loader-msgs">
+      <p class="ai-loader-title">🧠 AI is crafting your MCQs...</p>
+      <p class="ai-loader-sub">Topic: <strong>${topic}</strong></p>
+      <p class="ai-loader-hint">This may take 10–20 seconds</p>
+    </div>
+  </div>`;
 
   const prompt = `You are an expert question setter for JKSSB FMPHW/MMPHW health worker exam in India. Generate exactly 10 high-quality MCQs on the topic: "${topic}".
 
@@ -2322,7 +2330,9 @@ Make questions exam-realistic, clinically accurate, and relevant to India's heal
     const text = await callAI([{ role: 'user', content: prompt }], 2500);
     output.innerHTML = '<div class="mcqgen-result">' + parseMCQGenOutput(text, topic) + '</div>';
   } catch (e) {
-    output.innerHTML = `<div class="ai-error">❌ Error: ${e.message}</div>`;
+    output.innerHTML = `<div class="ai-error"><span class="ai-error-icon">❌</span><div><strong>Generation Failed</strong><p>${e.message}</p></div></div>`;
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = '✨ Generate 10 MCQs'; }
   }
 }
 
@@ -2359,7 +2369,7 @@ el('mcqgen-topic') && el('mcqgen-topic').addEventListener('keydown', e => { if (
 /* ──────────────────── AI STUDY PLANNER ──────────────────── */
 async function generateStudyPlan() {
   const output = el('planner-output');
-  if (!nvApiKey) { alert('Please activate AI first with your NVIDIA API key.'); return; }
+  const btn = el('planner-btn');
 
   const { total, correct } = getTotals();
   const weakAreas = TOPICS.filter(t => {
@@ -2375,7 +2385,15 @@ async function generateStudyPlan() {
   }).map(t => t.name);
   const notStarted = TOPICS.filter(t => !progress[t.id] || progress[t.id].attempted < 3).map(t => t.name);
 
-  output.innerHTML = `<div class="ai-thinking"><div class="typing-dots"><span></span><span></span><span></span></div><p>Analysing your performance data and building your personalised plan...</p></div>`;
+  if (btn) { btn.disabled = true; btn.textContent = '⏳ Building Plan...'; }
+  output.innerHTML = `<div class="ai-loader">
+    <div class="ai-loader-spinner"></div>
+    <div class="ai-loader-msgs">
+      <p class="ai-loader-title">📊 Analysing your performance...</p>
+      <p class="ai-loader-sub">Building a personalised 7-day study plan</p>
+      <p class="ai-loader-hint">This may take 10–20 seconds</p>
+    </div>
+  </div>`;
 
   const prompt = `You are an expert study coach for JKSSB FMPHW/MMPHW health worker exam in India (J&K).
 
@@ -2399,7 +2417,9 @@ Also provide 3 specific exam tips based on their performance. Make it motivating
     const text = await callAI([{ role: 'user', content: prompt }], 2000);
     output.innerHTML = '<div class="planner-result">' + fmtAI(text) + '</div>';
   } catch (e) {
-    output.innerHTML = `<div class="ai-error">❌ Error: ${e.message}</div>`;
+    output.innerHTML = `<div class="ai-error"><span class="ai-error-icon">❌</span><div><strong>Plan Generation Failed</strong><p>${e.message}</p></div></div>`;
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = '🗓️ Generate My Study Plan'; }
   }
 }
 
