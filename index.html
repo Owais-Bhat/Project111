@@ -298,13 +298,25 @@
 
 <!-- ═══════════ NOTES ═══════════ -->
 <main id="page-notes" class="page">
+  <div class="notes-toolbar">
+    <div class="notes-search-wrap">
+      <span class="nts-icon">🔍</span>
+      <input id="notes-search" type="text" placeholder="Search topics &amp; notes…" autocomplete="off">
+      <button id="notes-search-clear" title="Clear" style="display:none">✕</button>
+    </div>
+    <button id="notes-bm-filter" class="notes-bm-filter" title="Show bookmarked only">★ Bookmarks</button>
+    <div class="notes-progress">
+      <span id="notes-progress-label" class="np-label">0 / 12 read</span>
+      <div class="np-track"><div class="np-fill" id="notes-progress-fill"></div></div>
+    </div>
+  </div>
   <div class="notes-container">
     <aside class="notes-nav" id="notes-nav"></aside>
     <article class="notes-body" id="notes-body">
       <div class="notes-placeholder">
         <div style="font-size:3rem">📚</div>
         <h3>Select a topic to study</h3>
-        <p>Click any topic from the left panel to read comprehensive exam notes with tables, key points, and mnemonics.</p>
+        <p>Click any topic from the left panel to read comprehensive exam notes with tables, key points, and mnemonics. Use search to jump to a concept, ★ to bookmark, mark topics as read, highlight text, or export to PDF.</p>
       </div>
     </article>
   </div>

@@ -708,6 +708,88 @@ body::before{
 .notes-body th{background:rgba(0,212,255,.1);color:var(--cyan);padding:.5rem .7rem;text-align:left;font-size:.8rem;letter-spacing:.04em}
 .notes-body td{border-top:1px solid var(--border);padding:.5rem .7rem;color:var(--text2)}
 
+/* mnemonic box */
+.notes-body .mn{
+  background:linear-gradient(135deg,rgba(251,191,36,.09),rgba(249,115,22,.07));
+  border-left:3px solid #fbbf24;
+  padding:.7rem 1.1rem;border-radius:0 10px 10px 0;
+  margin:.75rem 0;font-size:.88rem;color:#fde68a;line-height:1.7;
+}
+.notes-body mark.nh{background:rgba(250,204,21,.38);color:#fff;border-radius:3px;padding:0 2px;cursor:pointer}
+.notes-body p:first-of-type{font-size:.92rem;color:var(--text2)}
+
+/* notes toolbar */
+.notes-toolbar{
+  display:flex;gap:.8rem;align-items:center;flex-wrap:wrap;
+  margin-bottom:1rem;
+}
+.notes-search-wrap{
+  position:relative;flex:1;min-width:200px;display:flex;align-items:center;
+  background:var(--glass2);border:1px solid var(--border);border-radius:12px;
+  padding:0 .7rem;
+}
+.notes-search-wrap:focus-within{border-color:var(--cyan);box-shadow:0 0 0 2px rgba(0,212,255,.15)}
+.nts-icon{font-size:.85rem;opacity:.7}
+#notes-search{
+  flex:1;background:transparent;border:none;outline:none;color:var(--text);
+  font-family:inherit;font-size:.85rem;padding:.6rem .5rem;
+}
+#notes-search::placeholder{color:var(--muted)}
+#notes-search-clear{
+  background:transparent;border:none;color:var(--muted);cursor:pointer;
+  font-size:.8rem;padding:.2rem .3rem;border-radius:6px;
+}
+#notes-search-clear:hover{color:var(--cyan)}
+.notes-bm-filter{
+  background:var(--glass2);border:1px solid var(--border);color:var(--muted);
+  border-radius:12px;padding:.55rem .9rem;font-family:inherit;font-size:.8rem;
+  font-weight:600;cursor:pointer;transition:all .15s;white-space:nowrap;
+}
+.notes-bm-filter:hover{color:#fbbf24}
+.notes-bm-filter.act{background:rgba(251,191,36,.14);border-color:rgba(251,191,36,.45);color:#fbbf24}
+.notes-progress{display:flex;align-items:center;gap:.55rem;min-width:160px}
+.np-label{font-size:.74rem;color:var(--muted);white-space:nowrap}
+.np-track{flex:1;height:7px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden;min-width:70px}
+.np-fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--cyan),#10ffa8);transition:width .6s cubic-bezier(.4,0,.2,1)}
+
+/* nav buttons (rebuilt) */
+.notes-nav .nn-btn{
+  display:flex;align-items:center;gap:.4rem;width:100%;background:transparent;border:none;
+  color:var(--muted);padding:.55rem .7rem;border-radius:10px;
+  font-size:.82rem;cursor:pointer;text-align:left;font-family:inherit;font-weight:500;
+  transition:all .15s;margin-bottom:.1rem;
+}
+.notes-nav .nn-btn:hover,.notes-nav .nn-btn.act{
+  background:rgba(0,212,255,.1);color:var(--cyan);font-weight:700;
+}
+.notes-nav .nn-label{flex:1;line-height:1.3}
+.notes-nav .nn-read{color:#10ffa8;font-size:.78rem;font-weight:800}
+.notes-nav .nn-star{color:var(--muted);font-size:.9rem;line-height:1}
+.notes-nav .nn-star:hover{color:#fbbf24}
+.notes-nav .nn-star.act{color:#fbbf24}
+.notes-nav-empty{color:var(--muted);font-size:.8rem;padding:.8rem;text-align:center}
+
+/* note action bar */
+.note-actionbar{
+  display:flex;gap:.5rem;flex-wrap:wrap;margin:-.4rem 0 1.1rem;
+  padding-bottom:1rem;border-bottom:1px solid var(--border);
+}
+.na-btn{
+  background:var(--glass2);border:1px solid var(--border);color:var(--text2);
+  border-radius:9px;padding:.45rem .8rem;font-family:inherit;font-size:.78rem;
+  font-weight:600;cursor:pointer;transition:all .15s;
+}
+.na-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+.na-btn.done{background:rgba(16,255,168,.12);border-color:rgba(16,255,168,.4);color:#10ffa8}
+.na-btn.on{background:rgba(251,191,36,.16);border-color:rgba(251,191,36,.5);color:#fbbf24}
+.note-content.hl-on{cursor:text}
+.note-content.hl-on ::selection{background:rgba(250,204,21,.45)}
+
+@media(max-width:640px){
+  .notes-toolbar{gap:.5rem}
+  .notes-progress{order:3;width:100%}
+}
+
 /* ═══════════════════════════════════
    AI TUTOR
    ═══════════════════════════════════ */
