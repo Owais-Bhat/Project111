@@ -15,6 +15,51 @@ const TOPICS = [
   { id: 'drug',       name: 'Essential Medicines & Drug',       icon: '💊', ca:'rgba(167,139,250,.15)',cb:'rgba(236,72,153,.1)',   glow:'rgba(167,139,250,.2)' },
 ];
 
+/* ───────────── Video / learning-resource links ─────────────
+   Auto-generates relevant YouTube + web search links for any
+   question or topic. No manual curation needed — always fresh. */
+function ytSearchUrl(query)     { return 'https://www.youtube.com/results?search_query=' + encodeURIComponent(query); }
+function googleSearchUrl(query) { return 'https://www.google.com/search?q=' + encodeURIComponent(query); }
+
+/* Build a concise, relevant search phrase from a question object */
+function videoQuery(q) {
+  const t = TOPICS.find(x => x.id === (q && q.topic));
+  const topicName = t ? t.name : '';
+  const base = ((q && q.q) || '')
+    .replace(/\([^)]*\)/g, ' ')   /* drop parenthetical asides */
+    .replace(/[?:]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return (base + (topicName ? ' ' + topicName : '')).trim();
+}
+
+/* Reusable button row for any search phrase */
+function videoButtonsHtml(query) {
+  const safe = (query || '').trim() || 'community health';
+  return `<div class="video-links">
+      <span class="vl-label">▶ Watch &amp; learn:</span>
+      <a class="vl-btn vl-yt" href="${ytSearchUrl(safe)}" target="_blank" rel="noopener">YouTube</a>
+      <a class="vl-btn vl-gl" href="${googleSearchUrl(safe + ' explained')}" target="_blank" rel="noopener">Web</a>
+    </div>`;
+}
+/* Button row for a question object */
+function videoLinksHtml(q) { return videoButtonsHtml(videoQuery(q)); }
+
+/* Per-topic resource panel (used on the notes / topic screen) */
+function topicVideoPanelHtml(topicId) {
+  const t = TOPICS.find(x => x.id === topicId);
+  const name = t ? t.name : 'this topic';
+  const q = (t ? t.name : '') + ' community health';
+  return `<div class="topic-video-panel">
+      <div class="tvp-head">🎥 Video resources — ${name}</div>
+      <div class="tvp-links">
+        <a class="vl-btn vl-yt" href="${ytSearchUrl(q + ' lecture')}" target="_blank" rel="noopener">YouTube Lectures</a>
+        <a class="vl-btn vl-yt" href="${ytSearchUrl(q + ' in hindi')}" target="_blank" rel="noopener">YouTube (Hindi)</a>
+        <a class="vl-btn vl-gl" href="${googleSearchUrl(q + ' notes pdf')}" target="_blank" rel="noopener">Web Notes</a>
+      </div>
+    </div>`;
+}
+
 const QUESTIONS = [
   /* ═══ MCH ═══ */
   { topic:'mch', q:'What is the recommended minimum number of ANC contacts as per WHO 2016 guidelines?', opts:['4 contacts','6 contacts','8 contacts','10 contacts'], ans:2, expl:'WHO 2016 recommends minimum 8 ANC contacts: at <12 weeks, 20, 26, 30, 34, 36, 38, and 40 weeks. India\'s RMNCH+A recommends at least 4 ANCs, but WHO updated to 8 for better outcomes.' },
@@ -1872,6 +1917,7 @@ function selectOption(chosen) {
   if (currentQuiz.mode === 'learn') {
     /* flip card to show explanation */
     if (el('expl-body')) el('expl-body').textContent = q.expl;
+    if (el('expl-videos')) el('expl-videos').innerHTML = videoLinksHtml(q);
     setTimeout(() => {
       el('flip-card').classList.add('flipped');
       /* btn-next-flip listener set once */
@@ -1926,6 +1972,7 @@ function showQuizResult() {
           <strong>✅ Correct: ${String.fromCharCode(65+a.correct)}. ${a.q.opts[a.correct]}</strong>
         </div>
         <div class="rev-expl">💡 ${a.q.expl}</div>
+        ${videoLinksHtml(a.q)}
       </div>`).join('');
   }
 }
@@ -2105,6 +2152,7 @@ function submitMock() {
             <strong>✅ ${String.fromCharCode(65+q.ans)}. ${q.opts[q.ans]}</strong>
           </div>
           <div class="rev-expl">💡 ${q.expl}</div>
+          ${videoLinksHtml(q)}
         </div>`;
       }).join('');
   }
@@ -2191,6 +2239,7 @@ function openNote(topicId) {
        <button class="na-btn" onclick="quizCurrentNote()">📝 Quiz me</button>
        <button class="na-btn" onclick="printNote()">🖨️ Print / PDF</button>
      </div>
+     ${topicVideoPanelHtml(topicId)}
      <div class="note-content" id="note-content">${contentHtml}</div>`;
   body.scrollTop = 0;
   const cont = el('note-content');
@@ -2597,6 +2646,7 @@ function renderBookmarks() {
       <p class="bk-q">${q.q}</p>
       <div class="bk-opts">${q.opts.map((o, oi) => `<div class="bk-opt ${oi === q.ans ? 'bk-correct' : ''}">${String.fromCharCode(65+oi)}. ${o}</div>`).join('')}</div>
       <div class="bk-expl">💡 ${q.expl}</div>
+      ${videoLinksHtml(q)}
     </div>`;
   }).join('');
   list.querySelectorAll('.bk-remove').forEach(btn => {
@@ -2689,6 +2739,7 @@ function selectDailyOption(chosen) {
   });
   if (el('dc-score')) el('dc-score').textContent = dailyQuiz.score;
   if (el('dc-expl')) el('dc-expl').textContent = q.expl;
+  if (el('dc-videos')) el('dc-videos').innerHTML = videoLinksHtml(q);
   if (el('dc-next-btn')) el('dc-next-btn').textContent = isLast ? 'Show Results 🏆' : 'Next Question →';
   setTimeout(() => el('dc-flip-card').classList.add('flipped'), 500);
 }
@@ -2812,6 +2863,7 @@ function parseMCQGenOutput(text, topic) {
           return `<div class="mcqgen-opt ${isAns ? 'mcqgen-ans' : ''}">${o}${isAns ? ' ✅' : ''}</div>`;
         }).join('')}</div>
         ${expl ? `<div class="mcqgen-expl">💡 ${expl}</div>` : ''}
+        ${videoButtonsHtml(qText + ' ' + topic)}
       </div>`;
     }).join('');
 }

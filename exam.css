@@ -1286,3 +1286,34 @@ body::before{
   .topic-grid-3d{grid-template-columns:repeat(2,1fr)}
   .exam-stat-row{grid-template-columns:repeat(2,1fr);display:grid}
 }
+
+/* ───────────── Video / resource links ───────────── */
+.video-links{
+  display:flex;align-items:center;flex-wrap:wrap;gap:.45rem;
+  margin-top:.7rem;padding-top:.6rem;
+  border-top:1px dashed rgba(0,212,255,.18);
+}
+.vl-label{font-size:.78rem;font-weight:600;color:var(--text2);margin-right:.15rem}
+.vl-btn{
+  display:inline-flex;align-items:center;gap:.3rem;
+  font-size:.78rem;font-weight:600;line-height:1;
+  padding:.4rem .7rem;border-radius:999px;
+  text-decoration:none;color:#fff;
+  border:1px solid transparent;cursor:pointer;
+  transition:transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+.vl-btn:hover{transform:translateY(-1px);filter:brightness(1.08)}
+.vl-btn:active{transform:translateY(0)}
+.vl-yt{background:linear-gradient(135deg,#ff1f3d,#c1121f);box-shadow:0 3px 10px rgba(255,31,61,.25)}
+.vl-yt::before{content:"▶";font-size:.62rem}
+.vl-gl{background:linear-gradient(135deg,#1a73e8,#0b57d0);box-shadow:0 3px 10px rgba(26,115,232,.25)}
+.vl-gl::before{content:"🔎";font-size:.7rem}
+
+/* Per-topic resource panel on the notes screen */
+.topic-video-panel{
+  margin:.2rem 0 1rem;padding:.85rem 1rem;border-radius:14px;
+  background:linear-gradient(135deg,rgba(0,212,255,.08),rgba(139,92,246,.08));
+  border:1px solid rgba(0,212,255,.18);
+}
+.tvp-head{font-size:.9rem;font-weight:700;color:var(--cyan);margin-bottom:.6rem}
+.tvp-links{display:flex;flex-wrap:wrap;gap:.5rem}
